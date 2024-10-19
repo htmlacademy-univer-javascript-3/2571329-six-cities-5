@@ -1,17 +1,11 @@
-import { Main } from "../../pages/main/Main";
-import { City, offerCard } from "../../types";
+import { Main } from '../../pages/main/Main';
+import { City, offerCard } from '../../types';
 
-type AppProps = {
-    offers: offerCard[];
-    currentCity: City;
-};
+interface IAppProps {
+  offers: offerCard[];
+  currentCity: City;
+}
 
-export const App: React.FC<AppProps> = ({
-    offers,
-    currentCity
-}) => {
-    return (
-        <Main offers={offers} currentCity={currentCity} />
-    );
-};
-
+export const App: React.FC<IAppProps> = ({ offers, currentCity }) => (
+  <Main offers={offers} currentCity={currentCity} />
+);
