@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { City, offerCard } from './types';
+import { AppRoute, AuthorizationStatus, City, offerCard } from './types';
 import { App } from './components/app/App';
 import { Login } from './pages/login/Login';
 import { Favorites } from './pages/favorites/Favorites';
 import { Offer } from './pages/offer/Offer';
+import { NotFound } from './pages/not-found/NotFound';
+import { PrivateRoute } from './components/private-router/PrivateRouter';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 const CITY: City = 'Amsterdam';
 const OFFERS_CARDS: offerCard[] = [
@@ -42,9 +45,42 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App offers={OFFERS_CARDS} currentCity={CITY} />
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path={AppRoute.Main}
+          element={
+            <App
+              offers={OFFERS_CARDS}
+              currentCity={CITY}
+            />
+          }
+        />
+        <Route
+          path={AppRoute.Favorites}
+          element={
+            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+              <Favorites />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={AppRoute.Login}
+          element={<Login />}
+        />
+        <Route
+          path={AppRoute.Offer}
+          element={<Offer />}
+        />
+        <Route
+          path='*'
+          element={<NotFound />}
+        />
+      </Routes>
+    </BrowserRouter>
+    {/* <App offers={OFFERS_CARDS} currentCity={CITY} />
     <Login />
     <Favorites />
-    <Offer />
+    <Offer /> */}
   </React.StrictMode>
 );
