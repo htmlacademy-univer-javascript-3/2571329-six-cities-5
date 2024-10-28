@@ -1,10 +1,20 @@
-export const Favorites: React.FC = () => (
+import { offerCard } from '../../types';
+import { ListOffers } from '../../components/list-offers/ListOffers';
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../types';
+type FavoritesProps = {
+  offers: offerCard[];
+}
+
+export const Favorites: React.FC<FavoritesProps> = ({
+  offers
+}) => (
   <div className="page">
     <header className="header">
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
-            <a className="header__logo-link" href="main.html">
+            <Link to={AppRoute.Main}>
               <img
                 className="header__logo"
                 src="img/logo.svg"
@@ -12,7 +22,7 @@ export const Favorites: React.FC = () => (
                 width={81}
                 height={41}
               />
-            </a>
+            </Link>
           </div>
           <nav className="header__nav">
             <ul className="header__nav-list">
@@ -43,7 +53,8 @@ export const Favorites: React.FC = () => (
         <section className="favorites">
           <h1 className="favorites__title">Saved listing</h1>
           <ul className="favorites__list">
-            <li className="favorites__locations-items">
+            <ListOffers offers={offers} />
+            {/* <li className="favorites__locations-items">
               <div className="favorites__locations locations locations--current">
                 <div className="locations__item">
                   <a className="locations__item-link" href="#">
@@ -148,8 +159,8 @@ export const Favorites: React.FC = () => (
                   </div>
                 </article>
               </div>
-            </li>
-            <li className="favorites__locations-items">
+            </li> */}
+            {/* <li className="favorites__locations-items">
               <div className="favorites__locations locations locations--current">
                 <div className="locations__item">
                   <a className="locations__item-link" href="#">
@@ -205,7 +216,7 @@ export const Favorites: React.FC = () => (
                   </div>
                 </article>
               </div>
-            </li>
+            </li> */}
           </ul>
         </section>
       </div>
