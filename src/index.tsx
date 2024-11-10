@@ -9,6 +9,7 @@ import { NotFound } from './pages/not-found/NotFound';
 import { PrivateRoute } from './components/private-router/PrivateRouter';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { OFFERS_CARDS, CITY } from './mocks/offers';
+import { REVIEWS } from './mocks/reviews';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -41,7 +42,7 @@ root.render(
         />
         <Route
           path={AppRoute.Offer}
-          element={<Offer />}
+          element={<Offer reviews={REVIEWS} offers={OFFERS_CARDS} currentCity={CITY}/>}
         />
         <Route
           path='*'
