@@ -53,4 +53,5 @@ export type TReview = {
 export const enum CardClassNameList {
   citiesList = 'cities__card',
   neardPlace = 'near-places__card',
+  favoritePlace = 'favorites__card',
 }
