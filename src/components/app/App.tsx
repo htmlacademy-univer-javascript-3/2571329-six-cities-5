@@ -1,9 +1,9 @@
 import { Main } from '../../pages/main/Main';
-import { City, offerCard } from '../../types';
+import { CityData, offerCard } from '../../types';
 
 interface IAppProps {
   offers: offerCard[];
-  currentCity: City;
+  currentCity: CityData;
 }
 
 export const App: React.FC<IAppProps> = ({ offers, currentCity }) => (
