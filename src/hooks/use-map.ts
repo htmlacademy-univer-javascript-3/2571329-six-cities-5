@@ -1,12 +1,27 @@
 import { useEffect, useRef, useState, MutableRefObject } from 'react';
-import { CityData } from '../../types';
-import { ZOOM } from '../../types/constant';
+import { CityData } from '../types';
+import { ZOOM } from '../types/constant';
 import leaflet from 'leaflet';
 
 type useMapProps = {
   mapRef: MutableRefObject<HTMLDivElement | null>;
   currentCity: CityData;
 }
+
+const setNewCenter = (
+  map: leaflet.Map | null,
+  currentCity: CityData
+) => {
+  if (map) {
+    map.setView(
+      {
+        lat: currentCity.lat,
+        lng: currentCity.lng,
+      },
+      ZOOM
+    );
+  }
+};
 
 export function useMap({mapRef, currentCity}: useMapProps) {
   const [map, setMap] = useState<leaflet.Map | null>(null);
@@ -33,6 +48,8 @@ export function useMap({mapRef, currentCity}: useMapProps) {
 
       setMap(instance);
       isRenderedRef.current = true;
+    } else {
+      setNewCenter(map, currentCity);
     }
   }, [mapRef, currentCity]);
 

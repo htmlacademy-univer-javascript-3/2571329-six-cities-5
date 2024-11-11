@@ -1,10 +1,4 @@
-import { offerCard, CityData } from '../types';
-
-export const CITY: CityData = {
-  title: 'Amsterdam',
-  lng: 4.9041,
-  lat: 52.3676,
-};
+import { offerCard } from '../types';
 
 export const OFFERS_CARDS: offerCard[] = [
   {
@@ -28,7 +22,8 @@ export const OFFERS_CARDS: offerCard[] = [
     inMarks: false,
     lat: 52.3609553943508,
     lng: 4.85309666406198,
-  }, {
+  },
+  {
     id: 3,
     img: 'img/appartment-03.jpg',
     price: 70,
