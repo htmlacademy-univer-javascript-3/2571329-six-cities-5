@@ -6,7 +6,7 @@ type ListOffersProps = {
   offers: offerCard[];
   cardClassName: CardClassNameList;
   activeOffer: number | null;
-  setActiveOffer: (id: number | null) => void;
+  setActiveOffer?: ((id: number | null) => void) | null;
 }
 
 export const ListOffers: React.FC<ListOffersProps> = ({
@@ -19,7 +19,7 @@ export const ListOffers: React.FC<ListOffersProps> = ({
       key={offer.id}
       offer={offer}
       cardClassName={cardClassName}
-      setActiveOffer={setActiveOffer}
+      setActiveOffer={setActiveOffer ? setActiveOffer: null}
     />)
   )
 );
