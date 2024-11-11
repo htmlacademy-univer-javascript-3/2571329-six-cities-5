@@ -15,7 +15,7 @@ export const OFFERS_CARDS: offerCard[] = [
   }, {
     id: 2,
     img: 'img/appartment-02.jpg',
-    price: 30,
+    price: 70,
     rating: 2,
     name: 'Test2',
     type: 'Apartament',
@@ -26,7 +26,7 @@ export const OFFERS_CARDS: offerCard[] = [
   {
     id: 3,
     img: 'img/appartment-03.jpg',
-    price: 70,
+    price: 40,
     rating: 5,
     name: 'Test3',
     type: 'Room',
@@ -34,7 +34,7 @@ export const OFFERS_CARDS: offerCard[] = [
     lat: 52.3909553943508,
     lng: 4.929309666406198,
   }, {
-    id: 3,
+    id: 4,
     img: 'img/appartment-03.jpg',
     price: 200,
     rating: 2,
