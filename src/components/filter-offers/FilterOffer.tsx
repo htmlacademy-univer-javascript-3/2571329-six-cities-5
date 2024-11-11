@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { SortName } from '../../types';
 
 type FilterOfferProps = {
-  currentSort: SortName,
+  currentSort: SortName;
   onSortChange: (sortType: SortName) => void;
 }
 
@@ -24,16 +24,16 @@ export const FilterOffer: React.FC<FilterOfferProps> = ({
   return (
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by </span>
-      <span className="places__sorting-type" 
+      <span className="places__sorting-type"
         tabIndex={0}
         onClick={() => setActive((prevstate) => !prevstate)}
       >
-      {SORT_TYPES.find((sort) => sort.value === currentSort)?.label || ''}
+        {SORT_TYPES.find((sort) => sort.value === currentSort)?.label || ''}
         <svg className="places__sorting-arrow" width={7} height={4}>
           <use xlinkHref="#icon-arrow-select" />
         </svg>
       </span>
-      {isActive && 
+      {isActive &&
         <ul className="places__options places__options--custom places__options--opened">
           {SORT_TYPES.map((sort) => (
             <li
@@ -45,8 +45,7 @@ export const FilterOffer: React.FC<FilterOfferProps> = ({
               {sort.label}
             </li>
           ))}
-        </ul>
-      }
+        </ul>}
     </form>
   );
 };

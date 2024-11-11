@@ -19,8 +19,8 @@ export const CityCard: React.FC<CityCardProps> = ({
   const [ isActiveCard, setActiveCard ] = useState(false);
 
   return (
-    <article 
-      className={`${cardClassName} place-card`} 
+    <article
+      className={`${cardClassName} place-card`}
       onMouseEnter={() => setActiveOffer(offer.id)}
       onMouseLeave={() => setActiveOffer(null)}
       onMouseOver={() => setActiveCard(!isActiveCard)}

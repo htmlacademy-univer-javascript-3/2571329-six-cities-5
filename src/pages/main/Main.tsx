@@ -29,7 +29,7 @@ export const Main: React.FC<MainProps> = ({
   };
 
   const [activeOffer, setActiveOffer] = useState<number | null>(null);
-  
+
   const [sortType, setSortType] = useState<SortName>(SortName.popular);
   const sortedOffers = offers.slice().sort((a, b) => {
     switch (sortType) {

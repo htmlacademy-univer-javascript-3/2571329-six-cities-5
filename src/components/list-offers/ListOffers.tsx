@@ -14,11 +14,12 @@ export const ListOffers: React.FC<ListOffersProps> = ({
   cardClassName,
   setActiveOffer
 }) => (
-  offers.map((offer: offerCard) => 
-  <CityCard 
-    key={offer.id} 
-    offer={offer} 
-    cardClassName={cardClassName}
-    setActiveOffer={setActiveOffer}
-  />)
+  offers.map((offer: offerCard) => (
+    <CityCard
+      key={offer.id}
+      offer={offer}
+      cardClassName={cardClassName}
+      setActiveOffer={setActiveOffer}
+    />)
+  )
 );
