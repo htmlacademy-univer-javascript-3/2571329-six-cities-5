@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 type CityCardProps = {
   offer: offerCard;
   cardClassName: string;
-  setActiveOffer: ((id: number | null) => void) | null;
+  setActiveOffer?: (id: number | null) => void;
 };
 
 const ACTIVE_MARK_BUTTON_CLASS = 'place-card__bookmark-button--active';
