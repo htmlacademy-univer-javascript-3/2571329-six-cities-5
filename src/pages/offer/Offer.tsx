@@ -18,7 +18,7 @@ export const Offer: React.FC<OfferProps> = ({
   currentCity,
 }) => {
   const [activeOffer, setActiveOffer] = useState<number | null>(null);
-
+  
   return (
     <div className="page">
       <header className="header">
