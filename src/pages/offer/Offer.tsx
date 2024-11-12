@@ -18,7 +18,7 @@ export const Offer: React.FC<OfferProps> = ({
   currentCity,
 }) => {
   const [activeOffer, setActiveOffer] = useState<number | null>(null);
-
+  
   return (
     <div className="page">
       <header className="header">
@@ -205,7 +205,7 @@ export const Offer: React.FC<OfferProps> = ({
               Other places in the neighbourhood
             </h2>
             <div className="near-places__list places__list">
-              <ListOffers offers={offers} cardClassName={CardClassNameList.neardPlace} activeOffer={activeOffer} setActiveOffer={setActiveOffer} />
+              <ListOffers offers={offers} cardClassName={CardClassNameList.neardPlace} setActiveOffer={setActiveOffer} />
             </div>
           </section>
         </div>

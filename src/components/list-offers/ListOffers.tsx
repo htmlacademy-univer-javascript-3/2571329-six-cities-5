@@ -5,8 +5,7 @@ import { CityCard } from '../city-card/CityCard';
 type ListOffersProps = {
   offers: offerCard[];
   cardClassName: CardClassNameList;
-  activeOffer: number | null;
-  setActiveOffer?: ((id: number | null) => void) | null;
+  setActiveOffer?: (id: number | null) => void;
 }
 
 export const ListOffers: React.FC<ListOffersProps> = ({
@@ -19,7 +18,7 @@ export const ListOffers: React.FC<ListOffersProps> = ({
       key={offer.id}
       offer={offer}
       cardClassName={cardClassName}
-      setActiveOffer={setActiveOffer ? setActiveOffer : null}
+      {...(setActiveOffer && {setActiveOffer})}
     />)
   )
 );

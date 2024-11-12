@@ -50,7 +50,7 @@ export const Map: React.FC<MapProps> = ({
           .addTo(map);
       });
     }
-  }, [map, offers]);
+  }, [map, activeOffer, offers]);
 
   return (
     <div

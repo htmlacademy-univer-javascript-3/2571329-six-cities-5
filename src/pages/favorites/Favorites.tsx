@@ -53,7 +53,7 @@ export const Favorites: React.FC<FavoritesProps> = ({
         <section className="favorites">
           <h1 className="favorites__title">Saved listing</h1>
           <ul className="favorites__list">
-            <ListOffers offers={offers} cardClassName={CardClassNameList.favoritePlace} activeOffer={null}/>
+            <ListOffers offers={offers} cardClassName={CardClassNameList.favoritePlace}/>
           </ul>
         </section>
       </div>
