@@ -8,6 +8,8 @@ import { useAppDispatch } from '../../hooks';
 import { changeSelectedCity } from '../../store/action';
 import { ListCities } from '../../components/list-cities/ListCities';
 import { FilterOffer } from '../../components/filter-offers/FilterOffer';
+import { useAppSelector } from '../../hooks';
+import LoadingScreen from '../../components/loader-screen/LoadingScreen';
 
 type MainProps = {
   offers: offerCard[];
@@ -22,27 +24,30 @@ export const Main: React.FC<MainProps> = ({
 }:MainProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const isOfferLoading = useAppSelector((state) => state.offersLoading);
 
   const handleUserSelectCity = (cityName: City) => {
     dispatch(changeSelectedCity(cityName));
-    // dispatch(fillOffers());
   };
 
   const [activeOffer, setActiveOffer] = useState<number | null>(null);
 
   const [sortType, setSortType] = useState<SortName>(SortName.popular);
-  const sortedOffers = offers.slice().sort((a, b) => {
-    switch (sortType) {
-      case SortName.lowToHigh:
-        return a.price - b.price;
-      case SortName.highToLow:
-        return b.price - a.price;
-      case SortName.topRated:
-        return b.rating - a.rating;
-      default:
-        return 0;
-    }
-  });
+  const sortedOffers = offers
+    .filter((offer) =>
+      offer.city.name === currentCity.name)
+    .sort((a, b) => {
+      switch (sortType) {
+        case SortName.lowToHigh:
+          return a.price - b.price;
+        case SortName.highToLow:
+          return b.price - a.price;
+        case SortName.topRated:
+          return b.rating - a.rating;
+        default:
+          return 0;
+      }
+    });
 
   return (
     <div className="page page--gray page--main">
@@ -91,7 +96,7 @@ export const Main: React.FC<MainProps> = ({
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <ListCities currentCity={currentCity.title} cities={cities} onUserSelect={handleUserSelectCity}/>
+            <ListCities currentCity={currentCity.name} cities={cities} onUserSelect={handleUserSelectCity}/>
           </section>
         </div>
         <div className="cities">
@@ -99,11 +104,13 @@ export const Main: React.FC<MainProps> = ({
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">
-                {sortedOffers.length} places to stay in {currentCity.title}
+                {sortedOffers.length} places to stay in {currentCity.name}
               </b>
               <FilterOffer currentSort={sortType} onSortChange={setSortType} />
               <div className="cities__places-list places__list tabs__content">
-                <ListOffers offers={sortedOffers} cardClassName={CardClassNameList.citiesList} setActiveOffer={setActiveOffer} />
+                { isOfferLoading ?
+                  <LoadingScreen /> :
+                  <ListOffers offers={sortedOffers} cardClassName={CardClassNameList.citiesList} setActiveOffer={setActiveOffer} /> }
               </div>
             </section>
             <div className="cities__right-section">
