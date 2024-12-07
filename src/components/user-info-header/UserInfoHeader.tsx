@@ -10,22 +10,19 @@ import { Link } from 'react-router-dom';
 export const UserInfoHeader = (): JSX.Element => {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
   const userEmail = useAppSelector((state) => state.userData?.email);
-  const dispatch = useAppDispatch(); 
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  
   const handleClick = (evt: SyntheticEvent) => {
     evt.preventDefault();
     dispatch(logoutAction());
-  }
-
+  };
   return (
     <header className="header">
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
             <div className="header__logo-link header__logo-link--active"
-              onClick={() =>
-              navigate(AppRoute.Main)}
+              onClick={() => navigate(AppRoute.Main)}
             >
               <img
                 className="header__logo"
@@ -40,19 +37,19 @@ export const UserInfoHeader = (): JSX.Element => {
             <ul className="header__nav-list">
               {
                 authorizationStatus === AuthorizationStatus.Auth ?
-                <li className="header__nav-item user">
-                  <a
-                    className="header__nav-link header__nav-link--profile"
-                    href="#"
-                  >
-                    <div className="header__avatar-wrapper user__avatar-wrapper" />
+                  <li className="header__nav-item user">
+                    <Link
+                      className="header__nav-link header__nav-link--profile"
+                      to={AppRoute.Main}
+                    >
+                      <div className="header__avatar-wrapper user__avatar-wrapper" />
                       <span className="header__user-name user__name">
                         {userEmail}
                       </span>
                       <span className="header__favorite-count">3</span>
-                  </a>
-                </li> :
-                null
+                    </Link>
+                  </li> :
+                  null
               }
               <li className="header__nav-item">
                 {
@@ -70,5 +67,5 @@ export const UserInfoHeader = (): JSX.Element => {
         </div>
       </div>
     </header>
-  )
+  );
 };

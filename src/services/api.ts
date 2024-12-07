@@ -30,7 +30,7 @@ export const createAPI = (): AxiosInstance => {
 
       return config;
     },
-  )
+  );
 
   api.interceptors.response.use(
     (response) => response,

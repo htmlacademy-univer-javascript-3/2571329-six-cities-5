@@ -40,11 +40,11 @@ export const checkAuthorizationStatus = createAsyncThunk<void, undefined, {
   'CHECK_AUTHORIZATION_STATUS',
   async(_arg, {dispatch, extra: api}) => {
     try {
-      const {data} = await api.get(APIRoute.Login);
+      const {data} = await api.get<UserData>(APIRoute.Login);
       dispatch(requireAuthorization(AuthorizationStatus.Auth));
       dispatch(setUserData(data));
     } catch {
-      dispatch(requireAuthorization(AuthorizationStatus.NoAuth))
+      dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
     }
   },
 );

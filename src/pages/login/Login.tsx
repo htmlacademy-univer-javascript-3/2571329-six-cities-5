@@ -5,17 +5,17 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
 
 export const Login: React.FC = () => {
-  function handleSubmit(evt: FormEvent) {
-    evt.preventDefault();
-    const login = emailInput.current!.value;
-    const password = passwordInput.current!.value; 
-    dispatch(loginAction({login, password}));
-  };
-
   const dispatch = useAppDispatch();
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
   const emailInput = useRef<HTMLInputElement>(null);
   const passwordInput = useRef<HTMLInputElement>(null);
+
+  function handleSubmit(evt: FormEvent) {
+    evt.preventDefault();
+    const login = emailInput.current!.value;
+    const password = passwordInput.current!.value;
+    dispatch(loginAction({login, password}));
+  }
 
   if (authorizationStatus === AuthorizationStatus.Auth) {
     return <Navigate to={AppRoute.Main} />;
@@ -76,4 +76,4 @@ export const Login: React.FC = () => {
       </main>
     </div>
   );
-}
+};

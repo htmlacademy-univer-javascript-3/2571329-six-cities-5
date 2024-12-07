@@ -41,8 +41,10 @@ export const reducer = createReducer(initialState, (builder) => {
       state.authorizationStatus = action.payload;
     })
     .addCase(setUserData, (state, action) => {
-      action.payload ? 
-        state.userData = action.payload :
+      if (action.payload) {
+        state.userData = action.payload;
+      } else {
         state.userData = null;
-    }); 
+      }
+    });
 });
