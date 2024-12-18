@@ -2,35 +2,55 @@ import { Navigate, useParams } from 'react-router-dom';
 import { CardClassNameList, AuthorizationStatus } from '../../types';
 import { commentData, FormComments } from '../../components/form-comments/FormComments';
 import { ListReviews } from '../../components/list-reviews/ListReviews';
-import { Map } from '../../components/map/Map';
+import Map from '../../components/map/Map';
 import { ListOffers } from '../../components/list-offers/ListOffers';
-import { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchNearOfferAction, fetchOfferAction, fetchReviewAction, postReviewAction } from '../../store/api-actions';
-import { UserInfoHeader } from '../../components/user-info-header/UserInfoHeader';
+import UserInfoHeader from '../../components/user-info-header/UserInfoHeader';
 import LoadingScreen from '../../components/loader-screen/LoadingScreen';
 import { clearOffer, clearReviews, clearNearOffers } from '../../store/action';
 
-export const Offer: React.FC = () => {
-  const id = useParams().id;
+const Offer: React.FC = () => {
+  const idParam = useParams().id;
+  const id = useMemo(() => idParam, [idParam]);
+
   const [activeOffer, setActiveOffer] = useState<string | null>(null);
 
   const dispatch = useAppDispatch();
-  const currentCity = useAppSelector((state) => state.currentCity);
-  const isOfferLoading = useAppSelector((state) => state.offerLoading);
-  const offerData = useAppSelector((state) => state.offer);
-  const reviews = useAppSelector((state) => state.reviews);
-  const isReviewsLoading = useAppSelector((state) => state.reviewsLoading);
-  const nearOffers = useAppSelector((state) => state.nearOffers);
-  const isNearOffersLoading = useAppSelector((state) => state.nearOffersLoading);
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+
+  const city = useAppSelector((state) => state.currentCity);
+  const currentCity = useMemo(() => city, [city]);
+
+  const OfferLoading = useAppSelector((state) => state.offerLoading);
+  const isOfferLoading = useMemo(() => OfferLoading, [OfferLoading]);
+
+  const offer = useAppSelector((state) => state.offer);
+  const offerData = useMemo(() => offer, [offer]);
+
+  const reviewsData = useAppSelector((state) => state.reviews);
+  const reviews = useMemo(() => reviewsData, [reviewsData]);
+  
+  const ReviewsLoading = useAppSelector((state) => state.reviewsLoading);
+  const isReviewsLoading = useMemo(() => ReviewsLoading, [ReviewsLoading]);
+
+  const nearOffersData = useAppSelector((state) => state.nearOffers);
+  const nearOffers = useMemo(() => nearOffersData, [nearOffersData]);
+
+  const NearOffersLoading = useAppSelector((state) => state.nearOffersLoading);
+  const isNearOffersLoading = useMemo(() => NearOffersLoading, [NearOffersLoading]);
+
+  const authStatus = useAppSelector((state) => state.authorizationStatus);
+  const authorizationStatus = useMemo(() => authStatus, [authStatus]);
+
   const error = useAppSelector((state) => state.error);
 
-  const handleSubmit = ({rating, review}: commentData) => {
+  const handleSubmit = useCallback(({rating, review}: commentData) => {
     if (id) {
       dispatch(postReviewAction({id, review, rating}));
     }
-  };
+  },
+  [id]);
 
   useEffect(() => {
     if (id) {
@@ -41,6 +61,7 @@ export const Offer: React.FC = () => {
       dispatch(clearOffer());
     };
   }, [dispatch, id]);
+
   useEffect(() => {
     if (id && offerData) {
       dispatch(fetchReviewAction(id));
@@ -199,3 +220,5 @@ export const Offer: React.FC = () => {
     </div>
   );
 };
+
+export default React.memo(Offer);

@@ -1,8 +1,8 @@
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../types';
 
-export const NotFound: React.FC = () => (
+const NotFound: React.FC = () => (
   <Fragment>
     <h2> Not Found 404.</h2>
     <Link to={AppRoute.Main}>
@@ -10,3 +10,5 @@ export const NotFound: React.FC = () => (
     </Link>
   </Fragment>
 );
+
+export default React.memo(NotFound);
