@@ -1,16 +1,16 @@
 import React, { useState, useMemo, useCallback } from 'react';
-import { offerCard, CityData, City } from '../../types';
+import { offerCard, CityData } from '../../types';
 import { ListOffers } from '../../components/list-offers/ListOffers';
 import Map from '../../components/map/Map';
 import useFilter from '../../hooks/use-fiter';
 import { CardClassNameList, SortName } from '../../types';
 import { useAppDispatch } from '../../hooks';
-import { changeSelectedCity } from '../../store/action';
 import { ListCities } from '../../components/list-cities/ListCities';
 import { FilterOffer } from '../../components/filter-offers/FilterOffer';
 import { useAppSelector } from '../../hooks';
 import LoadingScreen from '../../components/loader-screen/LoadingScreen';
 import UserInfoHeader from '../../components/user-info-header/UserInfoHeader';
+import { selectOffersLoading, changeSelectedCity } from '../../store/offerSlice';
 
 type MainProps = {
   offers: offerCard[];
@@ -25,18 +25,18 @@ const Main: React.FC<MainProps> = ({
 }:MainProps) => {
   const dispatch = useAppDispatch();
 
-  const OffersLoading = useAppSelector((state) => state.offersLoading);
+  const OffersLoading = useAppSelector(selectOffersLoading);
   const isOffersLoading = useMemo(() => OffersLoading, [OffersLoading]);
 
-  const handleUserSelectCity = useCallback((cityName: City) => {
-    dispatch(changeSelectedCity(cityName));
+  const handleUserSelectCity = useCallback((city: CityData) => {
+    dispatch(changeSelectedCity(city));
   },
   [offers]);
 
   const [activeOffer, setActiveOffer] = useState<string | null>(null);
   const [sortType, setSortType] = useState<SortName>(SortName.popular);
 
-  const sortedOffersList = useFilter({offers, currentCity, sortType})
+  const sortedOffersList = useFilter({offers, currentCity, sortType});
   const sortedOffers = useMemo(() => sortedOffersList, [sortedOffersList]);
 
   return (

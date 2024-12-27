@@ -3,11 +3,12 @@ import { AppRoute, AuthorizationStatus } from '../../types';
 import React, { FormEvent, useCallback, useRef, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
+import { selectAuthStatus } from '../../store/userSlice';
 
 const Login: React.FC = () => {
   const dispatch = useAppDispatch();
 
-  const authStatus = useAppSelector((state) => state.authorizationStatus);
+  const authStatus = useAppSelector(selectAuthStatus);
   const authorizationStatus = useMemo(() => authStatus, [authStatus]);
 
   const emailInput = useRef<HTMLInputElement>(null);

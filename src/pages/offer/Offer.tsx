@@ -10,6 +10,8 @@ import { fetchNearOfferAction, fetchOfferAction, fetchReviewAction, postReviewAc
 import UserInfoHeader from '../../components/user-info-header/UserInfoHeader';
 import LoadingScreen from '../../components/loader-screen/LoadingScreen';
 import { clearOffer, clearReviews, clearNearOffers } from '../../store/action';
+import { selectCurrentCity, selectErrorOfferData, selectNearOffersData, selectNearOffersLoading, selectOfferData, selectOfferLoading, selectReviewsData, selectReviewsLoading } from '../../store/offerSlice';
+import { selectAuthStatus } from '../../store/userSlice';
 
 const Offer: React.FC = () => {
   const idParam = useParams().id;
@@ -19,31 +21,30 @@ const Offer: React.FC = () => {
 
   const dispatch = useAppDispatch();
 
-  const city = useAppSelector((state) => state.currentCity);
+  const city = useAppSelector(selectCurrentCity);
   const currentCity = useMemo(() => city, [city]);
 
-  const OfferLoading = useAppSelector((state) => state.offerLoading);
+  const OfferLoading = useAppSelector(selectOfferLoading);
   const isOfferLoading = useMemo(() => OfferLoading, [OfferLoading]);
 
-  const offer = useAppSelector((state) => state.offer);
+  const offer = useAppSelector(selectOfferData);
   const offerData = useMemo(() => offer, [offer]);
 
-  const reviewsData = useAppSelector((state) => state.reviews);
+  const reviewsData = useAppSelector(selectReviewsData);
   const reviews = useMemo(() => reviewsData, [reviewsData]);
-  
-  const ReviewsLoading = useAppSelector((state) => state.reviewsLoading);
+  const ReviewsLoading = useAppSelector(selectReviewsLoading);
   const isReviewsLoading = useMemo(() => ReviewsLoading, [ReviewsLoading]);
 
-  const nearOffersData = useAppSelector((state) => state.nearOffers);
+  const nearOffersData = useAppSelector(selectNearOffersData);
   const nearOffers = useMemo(() => nearOffersData, [nearOffersData]);
 
-  const NearOffersLoading = useAppSelector((state) => state.nearOffersLoading);
+  const NearOffersLoading = useAppSelector(selectNearOffersLoading);
   const isNearOffersLoading = useMemo(() => NearOffersLoading, [NearOffersLoading]);
 
-  const authStatus = useAppSelector((state) => state.authorizationStatus);
+  const authStatus = useAppSelector(selectAuthStatus);
   const authorizationStatus = useMemo(() => authStatus, [authStatus]);
 
-  const error = useAppSelector((state) => state.error);
+  const error = useAppSelector(selectErrorOfferData);
 
   const handleSubmit = useCallback(({rating, review}: commentData) => {
     if (id) {

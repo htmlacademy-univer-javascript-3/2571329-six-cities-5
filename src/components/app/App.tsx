@@ -9,23 +9,24 @@ import NotFound from '../../pages/not-found/NotFound';
 import { PrivateRoute } from '../../components/private-router/PrivateRouter';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useInitApp } from '../../hooks/use-init-app';
+import { selectCities, selectCurrentCity, selectOffersData } from '../../store/offerSlice';
+import { selectAuthStatus } from '../../store/userSlice';
 
 export const App: React.FC = () => {
   useInitApp();
 
-  const city = useAppSelector((state) => state.currentCity);
+  const city = useAppSelector(selectCurrentCity);
   const currentCity = useMemo(() => city, [city]);
 
-  const offersList = useAppSelector((state) => state.offers);
+  const offersList = useAppSelector(selectOffersData);
   const offers = useMemo(() => offersList, [offersList]);
 
-  const citiesList = useAppSelector((state) => state.cities);
+  const citiesList = useAppSelector(selectCities);
   const cities = useMemo(() => citiesList, [citiesList]);
 
-  const authStatus = useAppSelector((state) => state.authorizationStatus);
+  const authStatus = useAppSelector(selectAuthStatus);
   const authorizationStatus = useMemo(() => authStatus, [authStatus]);
-
-
+  console.log(authorizationStatus, 'APP')
   return (
     <BrowserRouter>
       <Routes>

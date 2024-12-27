@@ -5,13 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../types';
 import React, { SyntheticEvent, useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import { selectAuthStatus, selectUserData } from '../../store/userSlice';
 
 
 const UserInfoHeader = (): JSX.Element => {
-  const authStatus = useAppSelector((state) => state.authorizationStatus);
+  const authStatus = useAppSelector(selectAuthStatus);
   const authorizationStatus = useMemo(() => authStatus, [authStatus]);
 
-  const userDataEmail = useAppSelector((state) => state.userData?.email);
+  const userDataEmail = useAppSelector(selectUserData)?.email;
   const userEmail = useMemo(() => userDataEmail, [userDataEmail]);
 
   const dispatch = useAppDispatch();
