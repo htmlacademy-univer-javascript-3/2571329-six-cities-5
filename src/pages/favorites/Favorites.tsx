@@ -13,7 +13,9 @@ const Favorites: React.FC = () => {
   const userFavourite = useMemo(() => userFavoritesOffer, [userFavoritesOffer]);
 
   const citiesSet = new Set<City>;
-  userFavourite.forEach(favorite => citiesSet.add(favorite.city.name));
+  userFavourite.forEach((favorite) => {
+    citiesSet.add(favorite.city.name);
+  });
   const cities = Array.from(citiesSet);
 
   return (
@@ -26,23 +28,20 @@ const Favorites: React.FC = () => {
             <ul className="favorites__list">
               {userFavourite.length === 0 ?
                 <FavoritesEmpty /> :
-                cities.map((city, index) => {
-                  return (
-                    <li className="favorites__locations-items" key = {index}>
-                      <div className="favorites__locations locations locations--current">
-                        <div className="locations__item">
-                          <Link className="locations__item-link" to={AppRoute.Main}>
-                            <span>{city}</span>
-                          </Link>
-                        </div>
+                cities.map((city) => (
+                  <li className="favorites__locations-items" key={city}>
+                    <div className="favorites__locations locations locations--current">
+                      <div className="locations__item">
+                        <Link className="locations__item-link" to={AppRoute.Main}>
+                          <span>{city}</span>
+                        </Link>
                       </div>
-                      <div className="favorites__places">
-                        <ListOffers offers={userFavourite.filter((offerCity) => offerCity.city.name === city)} cardClassName={CardClassNameList.favoritePlace}/>
-                      </div>
-                    </li>
-                    )
-                  })
-              }
+                    </div>
+                    <div className="favorites__places">
+                      <ListOffers offers={userFavourite.filter((offerCity) => offerCity.city.name === city)} cardClassName={CardClassNameList.favoritePlace}/>
+                    </div>
+                  </li>
+                ))}
             </ul>
           </section>
         </div>
@@ -60,6 +59,6 @@ const Favorites: React.FC = () => {
       </footer>
     </div>
   );
-}
+};
 
 export default React.memo(Favorites);

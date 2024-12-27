@@ -23,26 +23,25 @@ export const CityCard: React.FC<CityCardProps> = ({
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  
   const authStatus = useAppSelector(selectAuthStatus);
   const authorizationStatus = useMemo(() => authStatus, [authStatus]);
 
   const userFavoritesOffer = useAppSelector(selectUserFavoritesData);
   const userFavourite = useMemo(() => userFavoritesOffer, [userFavoritesOffer]);
 
-  const isFavourite = userFavourite.map(favourite => favourite.id).includes(offer.id);
+  const isFavourite = userFavourite.map((favourite) => favourite.id).includes(offer.id);
 
   const handleClick = () => {
     if (authorizationStatus !== AuthorizationStatus.Auth) {
       navigate(AppRoute.Login);
     }
 
-    const pathOption = isFavourite ? 
+    const pathOption = isFavourite ?
       `${offer.id}/0` :
       `${offer.id}/1`;
 
     dispatch(changeFavoriteOfferAction(pathOption));
-  }
+  };
   return (
     <article
       className={`${cardClassName} place-card`}
@@ -72,7 +71,7 @@ export const CityCard: React.FC<CityCardProps> = ({
             <b className="place-card__price-value">{offer.price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
-          <button 
+          <button
             className={`place-card__bookmark-button button 
             ${ isFavourite ? ACTIVE_MARK_BUTTON_CLASS : ''}`}
             type="button"

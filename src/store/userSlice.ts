@@ -86,7 +86,7 @@ const userSlice = createSlice({
       })
       .addCase(fetchFavoriteOffersAction.pending, (state) => {
         state.loading = true;
-      })
+      });
   }
 });
 

@@ -59,12 +59,11 @@ const Main: React.FC<MainProps> = ({
               </b>
               <FilterOffer currentSort={sortType} onSortChange={setSortType} />
               <div className="cities__places-list places__list tabs__content">
-                { isOffersLoading ?
+                {isOffersLoading ?
                   <LoadingScreen /> :
-                  sortedOffers.length !== 0 ? 
+                  sortedOffers.length !== 0 ?
                     <ListOffers offers={sortedOffers} cardClassName={CardClassNameList.citiesList} setActiveOffer={setActiveOffer} /> :
-                    <MainEmpty currentCity={currentCity}/> 
-                  }
+                    <MainEmpty currentCity={currentCity}/> }
               </div>
             </section>
             <div className="cities__right-section">

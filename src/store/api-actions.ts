@@ -51,6 +51,32 @@ export const fetchNearOfferAction = createAsyncThunk<offerCard[], string, {
     return data.slice(0,3);
   }
 );
+
+export const fetchFavoriteOffersAction = createAsyncThunk<offerCard[], undefined, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'FETCH_FAVORITE_OFFERS',
+  async(_arg, { extra: api}) => {
+    const { data } = await api.get<offerCard[]>(APIRoute.Favorites);
+    return data;
+  },
+);
+
+export const changeFavoriteOfferAction = createAsyncThunk<void, string, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'CHANGE_FAVORITE_OFFERS',
+  async(pathOption, { dispatch, extra: api}) => {
+    await api.post<offerCard[]>(APIRoute.Favorites + pathOption);
+
+    dispatch(fetchFavoriteOffersAction());
+  },
+);
+
 // @ToDo: переписать код этого thunk ()
 // export const clearUserErrorAction = createAsyncThunk<void, undefined, {
 //   dispatch: AppDispatch;
@@ -100,31 +126,6 @@ export const loginAction = createAsyncThunk<UserData, AuthData, {
     saveToken(data.token);
     dispatch(fetchFavoriteOffersAction());
     return data;
-  },
-);
-
-export const fetchFavoriteOffersAction = createAsyncThunk<offerCard[], undefined, {
-  dispatch: AppDispatch;
-  state: State;
-  extra: AxiosInstance;
-}>(
-  'FETCH_FAVORITE_OFFERS',
-  async(_arg, { extra: api}) => {
-    const { data } = await api.get<offerCard[]>(APIRoute.Favorites);
-    return data;
-  },
-);
-
-export const changeFavoriteOfferAction = createAsyncThunk<void, string, {
-  dispatch: AppDispatch;
-  state: State;
-  extra: AxiosInstance;
-}>(
-  'CHANGE_FAVORITE_OFFERS',
-  async(pathOption, { dispatch, extra: api}) => {
-    await api.post<offerCard[]>(APIRoute.Favorites+pathOption);
-
-    dispatch(fetchFavoriteOffersAction());
   },
 );
 

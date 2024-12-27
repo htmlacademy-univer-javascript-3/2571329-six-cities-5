@@ -15,11 +15,14 @@ module.exports = {
   rules: {
     'react-refresh/only-export-components': 'warn',
     "react/prop-types": "off",
+    'no-nested-ternary': 'off'
   },
   overrides: [
     {
       files: [ '*test*' ],
-      rules: { '@typescript-eslint/unbound-method': 'off' }
+      rules: { 
+        '@typescript-eslint/unbound-method': 'off'
+       }
     },
   ],
 }
