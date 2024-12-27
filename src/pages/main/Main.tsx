@@ -11,6 +11,7 @@ import { useAppSelector } from '../../hooks';
 import LoadingScreen from '../../components/loader-screen/LoadingScreen';
 import UserInfoHeader from '../../components/user-info-header/UserInfoHeader';
 import { selectOffersLoading, changeSelectedCity } from '../../store/offerSlice';
+import MainEmpty from '../../components/main-empty/MainEmpty';
 
 type MainProps = {
   offers: offerCard[];
@@ -60,7 +61,10 @@ const Main: React.FC<MainProps> = ({
               <div className="cities__places-list places__list tabs__content">
                 { isOffersLoading ?
                   <LoadingScreen /> :
-                  <ListOffers offers={sortedOffers} cardClassName={CardClassNameList.citiesList} setActiveOffer={setActiveOffer} /> }
+                  sortedOffers.length !== 0 ? 
+                    <ListOffers offers={sortedOffers} cardClassName={CardClassNameList.citiesList} setActiveOffer={setActiveOffer} /> :
+                    <MainEmpty currentCity={currentCity}/> 
+                  }
               </div>
             </section>
             <div className="cities__right-section">
