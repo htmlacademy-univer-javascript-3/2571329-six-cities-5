@@ -12,12 +12,11 @@ export const PrivateRoute: React.FC<IPrivateRouterProps> = ({
   children
 }: IPrivateRouterProps) => {
   if (authorizationStatus === AuthorizationStatus.UnKnown) {
-    return <LoadingScreen />
+    return <LoadingScreen />;
   }
-  
   return (
     authorizationStatus === AuthorizationStatus.Auth
       ? children
       : <Navigate to={AppRoute.Login} />
   );
-}
+};

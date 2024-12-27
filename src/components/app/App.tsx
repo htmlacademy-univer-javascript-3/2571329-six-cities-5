@@ -26,7 +26,6 @@ export const App: React.FC = () => {
 
   const authStatus = useAppSelector(selectAuthStatus);
   const authorizationStatus = useMemo(() => authStatus, [authStatus]);
-  console.log(authorizationStatus, 'APP')
   return (
     <BrowserRouter>
       <Routes>

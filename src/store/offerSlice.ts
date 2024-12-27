@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CityData, offerCard, TReview, State, NameSpace } from '../types';
 import { CITIES } from '../types/cities';
 import { fetchOffersAction, fetchOfferAction, fetchReviewAction, fetchNearOfferAction } from './api-actions';
@@ -35,10 +35,10 @@ const offerSlice = createSlice({
   name: NameSpace.OFFER,
   initialState,
   reducers: {
-    setOfferError: (state, action) => {
+    setOfferError: (state, action: PayloadAction<string | null>) => {
       state.error = action.payload;
     },
-    changeSelectedCity: (state, action) => {
+    changeSelectedCity: (state, action: PayloadAction<CityData>) => {
       state.currentCity = action.payload;
     }
   },

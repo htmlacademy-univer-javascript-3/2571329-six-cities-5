@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { AuthorizationStatus, NameSpace, State, UserData } from '../types';
 import { checkAuthorizationStatus, loginAction, logoutAction } from './api-actions';
@@ -21,7 +21,7 @@ const userSlice = createSlice({
   name: NameSpace.USER,
   initialState,
   reducers: {
-    setUserError: (state, action) => {
+    setUserError: (state, action: PayloadAction<string | null>) => {
       state.error = action.payload;
     }
   },

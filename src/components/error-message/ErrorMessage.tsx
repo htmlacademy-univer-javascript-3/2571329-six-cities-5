@@ -11,12 +11,12 @@ function ErrorMessage(): JSX.Element | null {
   if (errorUser) {
     setTimeout(() => {
       dispatch(setUserError(null));
-    }, TIMEOUT_SHOW_ERROR)
+    }, TIMEOUT_SHOW_ERROR);
   }
   if (errorOffer) {
     setTimeout(() => {
       dispatch(setOfferError(null));
-    }, TIMEOUT_SHOW_ERROR)
+    }, TIMEOUT_SHOW_ERROR);
   }
   return (errorUser || errorOffer)
     ? <div className='error-message'>{errorUser || errorOffer}</div>

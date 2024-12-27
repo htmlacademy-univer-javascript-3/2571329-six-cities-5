@@ -1,4 +1,4 @@
-import { FormEvent, useState, useCallback } from 'react';
+import { FormEvent, useState } from 'react';
 
 type FormCommentsFields = HTMLInputElement | HTMLTextAreaElement;
 
@@ -19,19 +19,22 @@ export const FormComments: React.FC<FormCommentsProps> = ({
     review: '',
   });
 
-  const handleFieldChange = useCallback((evt: React.ChangeEvent<FormCommentsFields>) => {
+  const handleFieldChange = (evt: React.ChangeEvent<FormCommentsFields>) => {
     const {name, value } = evt.target;
     setCommentData({
       ...commentData,
       [name]:  name === 'rating' ? Number(value) : value,
     });
-  },
-  [handleSubmit]);
+  };
   return (
     <form className="reviews__form form" onSubmit={
       (evt: FormEvent) => {
         evt.preventDefault();
         handleSubmit(commentData);
+        setCommentData({
+          rating: 0,
+          review: '',
+        });
       }
     }
     >
