@@ -51,6 +51,32 @@ export const fetchNearOfferAction = createAsyncThunk<offerCard[], string, {
     return data.slice(0,3);
   }
 );
+
+export const fetchFavoriteOffersAction = createAsyncThunk<offerCard[], undefined, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'FETCH_FAVORITE_OFFERS',
+  async(_arg, { extra: api}) => {
+    const { data } = await api.get<offerCard[]>(APIRoute.Favorites);
+    return data;
+  },
+);
+
+export const changeFavoriteOfferAction = createAsyncThunk<void, string, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'CHANGE_FAVORITE_OFFERS',
+  async(pathOption, { dispatch, extra: api}) => {
+    await api.post<offerCard[]>(APIRoute.Favorites + pathOption);
+
+    dispatch(fetchFavoriteOffersAction());
+  },
+);
+
 // @ToDo: переписать код этого thunk ()
 // export const clearUserErrorAction = createAsyncThunk<void, undefined, {
 //   dispatch: AppDispatch;
@@ -82,8 +108,9 @@ export const checkAuthorizationStatus = createAsyncThunk<UserData, undefined, {
   extra: AxiosInstance;
 }>(
   'CHECK_AUTHORIZATION_STATUS',
-  async(_arg, { extra: api}) => {
+  async(_arg, { dispatch, extra: api}) => {
     const {data} = await api.get<UserData>(APIRoute.Login);
+    dispatch(fetchFavoriteOffersAction());
     return data;
   },
 );
@@ -94,9 +121,10 @@ export const loginAction = createAsyncThunk<UserData, AuthData, {
   extra: AxiosInstance;
 }>(
   'USER_LOGIN',
-  async ({login: email, password}, { extra: api}) => {
+  async ({login: email, password}, { dispatch, extra: api}) => {
     const {data} = await api.post<UserData>(APIRoute.Login, {email, password});
     saveToken(data.token);
+    dispatch(fetchFavoriteOffersAction());
     return data;
   },
 );
