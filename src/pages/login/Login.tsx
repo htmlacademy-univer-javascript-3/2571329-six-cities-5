@@ -3,7 +3,7 @@ import { AppRoute, AuthorizationStatus } from '../../types';
 import React, { FormEvent, useCallback, useRef, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
-import { selectAuthStatus } from '../../store/userSlice';
+import { selectAuthStatus } from '../../store/user-slice/selectors';
 
 const Login: React.FC = () => {
   const dispatch = useAppDispatch();

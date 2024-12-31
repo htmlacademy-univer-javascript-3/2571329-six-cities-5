@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { AuthorizationStatus, NameSpace, offerCard, State, UserData } from '../types';
-import { checkAuthorizationStatus, fetchFavoriteOffersAction, loginAction, logoutAction } from './api-actions';
+import { AuthorizationStatus, NameSpace, offerCard, UserData } from '../../types';
+import { checkAuthorizationStatus, fetchFavoriteOffersAction, loginAction, logoutAction } from '../api-actions';
 
 type InitialState = {
   error: string | null;
@@ -91,15 +91,5 @@ const userSlice = createSlice({
 });
 
 export const userReducer = userSlice.reducer;
-
-export const selectUserData = (state: State) => state[NameSpace.USER].userData;
-
-export const selectUserDataLoading = (state: State) => state[NameSpace.USER].loading;
-
-export const selectAuthStatus = (state: State) => state[NameSpace.USER].authorizationStatus;
-
-export const selectErrorUserDate = (state: State) => state[NameSpace.USER].error;
-
-export const selectUserFavoritesData = (state: State) => state[NameSpace.USER].favoriteOffers;
 
 export const { setUserError } = userSlice.actions;

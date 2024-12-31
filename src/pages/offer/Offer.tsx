@@ -10,8 +10,8 @@ import { fetchNearOfferAction, fetchOfferAction, fetchReviewAction, postReviewAc
 import UserInfoHeader from '../../components/user-info-header/UserInfoHeader';
 import LoadingScreen from '../../components/loader-screen/LoadingScreen';
 import { clearOffer, clearReviews, clearNearOffers } from '../../store/action';
-import { selectCurrentCity, selectErrorOfferData, selectNearOffersData, selectNearOffersLoading, selectOfferData, selectOfferLoading, selectReviewsData, selectReviewsLoading } from '../../store/offerSlice';
-import { selectAuthStatus } from '../../store/userSlice';
+import { selectCurrentCity, selectErrorOfferData, selectNearOffersData, selectNearOffersLoading, selectOfferData, selectOfferLoading, selectReviewsData, selectReviewsLoading } from '../../store/offer-slice/selectors';
+import { selectAuthStatus } from '../../store/user-slice/selectors';
 
 const Offer: React.FC = () => {
   const idParam = useParams().id;

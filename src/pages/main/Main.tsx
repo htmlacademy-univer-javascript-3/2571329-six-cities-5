@@ -10,7 +10,8 @@ import { FilterOffer } from '../../components/filter-offers/FilterOffer';
 import { useAppSelector } from '../../hooks';
 import LoadingScreen from '../../components/loader-screen/LoadingScreen';
 import UserInfoHeader from '../../components/user-info-header/UserInfoHeader';
-import { selectOffersLoading, changeSelectedCity } from '../../store/offerSlice';
+import { changeSelectedCity } from '../../store/offer-slice/offerSlice';
+import { selectOffersLoading } from '../../store/offer-slice/selectors';
 import MainEmpty from '../../components/main-empty/MainEmpty';
 
 type MainProps = {

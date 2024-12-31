@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CityData, offerCard, TReview, State, NameSpace } from '../types';
-import { CITIES } from '../types/cities';
-import { fetchOffersAction, fetchOfferAction, fetchReviewAction, fetchNearOfferAction } from './api-actions';
+import { CityData, offerCard, TReview, NameSpace } from '../../types';
+import { CITIES } from '../../types/cities';
+import { fetchOffersAction, fetchOfferAction, fetchReviewAction, fetchNearOfferAction } from '../api-actions';
 
 type InitialState = {
   currentCity: CityData;
@@ -100,28 +100,6 @@ const offerSlice = createSlice({
 });
 
 export const offerReducer = offerSlice.reducer;
-
-export const selectOffersData = (state: State) => state[NameSpace.OFFER].offers;
-
-export const selectOfferData = (state: State) => state[NameSpace.OFFER].offer;
-
-export const selectOfferLoading = (state: State) => state[NameSpace.OFFER].offerLoading;
-
-export const selectOffersLoading = (state: State) => state[NameSpace.OFFER].offersLoading;
-
-export const selectErrorOfferData = (state: State) => state[NameSpace.OFFER].error;
-
-export const selectNearOffersData = (state: State) => state[NameSpace.OFFER].nearOffers;
-
-export const selectNearOffersLoading = (state: State) => state[NameSpace.OFFER].nearOffersLoading;
-
-export const selectReviewsData = (state: State) => state[NameSpace.OFFER].reviews;
-
-export const selectReviewsLoading = (state: State) => state[NameSpace.OFFER].reviewsLoading;
-
-export const selectCurrentCity = (state: State) => state[NameSpace.OFFER].currentCity;
-
-export const selectCities = (state: State) => state[NameSpace.OFFER].cities;
 
 export const { setOfferError, changeSelectedCity } = offerSlice.actions;
 

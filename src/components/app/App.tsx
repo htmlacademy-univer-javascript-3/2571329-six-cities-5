@@ -9,8 +9,8 @@ import NotFound from '../../pages/not-found/NotFound';
 import { PrivateRoute } from '../../components/private-router/PrivateRouter';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useInitApp } from '../../hooks/use-init-app';
-import { selectCities, selectCurrentCity, selectOffersData } from '../../store/offerSlice';
-import { selectAuthStatus } from '../../store/userSlice';
+import { selectCities, selectCurrentCity, selectOffersData } from '../../store/offer-slice/selectors';
+import { selectAuthStatus } from '../../store/user-slice/selectors';
 
 export const App: React.FC = () => {
   useInitApp();
@@ -39,7 +39,7 @@ export const App: React.FC = () => {
           path={AppRoute.Favorites}
           element={
             <PrivateRoute authorizationStatus={authorizationStatus}>
-              <Favorites offers={offers}/>
+              <Favorites />
             </PrivateRoute>
           }
         />
