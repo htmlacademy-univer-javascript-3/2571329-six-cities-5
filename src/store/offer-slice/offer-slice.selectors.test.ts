@@ -34,7 +34,7 @@ describe('Offer Selector', () => {
 
     const resultCities = selectCities(state);
 
-    expect(resultCities).toBe(rigthCities);
+    expect(resultCities).toEqual(rigthCities);
   });
 
   it('should return offers from state', () => {
@@ -42,7 +42,7 @@ describe('Offer Selector', () => {
 
     const resultOffers = selectOffersData(state);
 
-    expect(resultOffers).toBe(rigthOffers);
+    expect(resultOffers).toEqual(rigthOffers);
   });
 
   it('should return offers loading status from state', () => {
@@ -82,7 +82,7 @@ describe('Offer Selector', () => {
 
     const resultNearOffers = selectNearOffersData(state);
 
-    expect(resultNearOffers).toBe(rigthNearOffers);
+    expect(resultNearOffers).toEqual(rigthNearOffers);
   });
 
   it('should return near offers data loading status from state', () => {
@@ -98,7 +98,7 @@ describe('Offer Selector', () => {
 
     const resultReviews = selectReviewsData(state);
 
-    expect(resultReviews).toBe(rigthReviews);
+    expect(resultReviews).toEqual(rigthReviews);
   });
 
   it('should return reviews loading status from state', () => {

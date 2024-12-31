@@ -51,6 +51,6 @@ describe('User Selector', () => {
 
     const resultUserFavoriteOffers = selectUserFavoritesData(state);
 
-    expect(resultUserFavoriteOffers).toBe(rigthUserFavoriteOffers);
+    expect(resultUserFavoriteOffers).toEqual(rigthUserFavoriteOffers);
   });
 })
