@@ -61,9 +61,11 @@ const userSlice = createSlice({
       })
       .addCase(logoutAction.pending, (state) => {
         state.loading = true;
+        state.authorizationStatus = AuthorizationStatus.UnKnown;
       })
       .addCase(logoutAction.rejected, (state, action) => {
         state.loading = false;
+        state.authorizationStatus = AuthorizationStatus.Auth;
         if (action.error.message) {
           state.error = action.error.message;
         }
