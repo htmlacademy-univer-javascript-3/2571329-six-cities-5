@@ -54,10 +54,10 @@ const UserInfoHeader = (): JSX.Element => {
                       to={AppRoute.Favorites}
                     >
                       <div className="header__avatar-wrapper user__avatar-wrapper" />
-                      <span className="header__user-name user__name">
+                      <span className="header__user-name user__name" data-testid="user-email">
                         {userEmail}
                       </span>
-                      <span className="header__favorite-count">{userFavourite.length}</span>
+                      <span className="header__favorite-count" data-testid="user-favorites">{userFavourite.length}</span>
                     </Link>
                   </li> :
                   null

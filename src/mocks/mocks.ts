@@ -1,7 +1,7 @@
 import { createAPI } from '../services/api';
 import { ThunkDispatch } from 'redux-thunk';
 import { Action } from 'redux';
-import { State } from '../types';
+import { NameSpace, State } from '../types';
 import { AuthorizationStatus } from '../types';
 import { CITIES } from '../types/cities';
 
@@ -30,3 +30,9 @@ export const mockOfferInitialState = {
 };
 
 export const extractActionsTypes = (actions: Action<string>[]) => actions.map(({ type }) => type);
+
+export const makeFakeStore = (initialState?: Partial<State>): State => ({
+  [NameSpace.USER]: mockUserInitialState,
+  [NameSpace.OFFER]: mockOfferInitialState,
+  ...initialState ?? {},
+});

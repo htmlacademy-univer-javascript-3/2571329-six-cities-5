@@ -343,7 +343,7 @@ describe('Async actions', () => {
     });
 
     it('should call "dropToken" once', async () => {
-      mockAxiosAdapter.onPost(APIRoute.Logout).reply(200);
+      mockAxiosAdapter.onDelete(APIRoute.Logout).reply(200);
 
       const mockDropToken = vi.spyOn(tokenStorage, 'dropToken');
       await store.dispatch(logoutAction());
@@ -352,7 +352,7 @@ describe('Async actions', () => {
     });
 
     it('should dispatch "logoutAction.pending" and "logoutAction.rejected" when server response 400', async () => {
-      mockAxiosAdapter.onPost(APIRoute.Logout).reply(400);
+      mockAxiosAdapter.onDelete(APIRoute.Logout).reply(401);
 
       await store.dispatch(logoutAction());
       const actions = extractActionsTypes(store.getActions());

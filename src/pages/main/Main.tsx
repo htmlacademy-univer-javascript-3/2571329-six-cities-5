@@ -47,7 +47,7 @@ const Main: React.FC<MainProps> = ({
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
-          <section className="locations container">
+          <section className="locations container" data-testid="cities-list">
             <ListCities currentCity={currentCity.name} cities={cities} onUserSelect={handleUserSelectCity}/>
           </section>
         </div>
@@ -55,7 +55,7 @@ const Main: React.FC<MainProps> = ({
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">
+              <b className="places__found" data-testid="city-place">
                 {sortedOffers.length} places to stay in {currentCity.name}
               </b>
               <FilterOffer currentSort={sortType} onSortChange={setSortType} />
