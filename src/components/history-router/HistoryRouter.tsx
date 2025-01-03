@@ -31,6 +31,6 @@ const HistoryRouter: React.FC<HistoryRouterProps> = ({
       {children}
     </Router>
   );
-}
+};
 
 export default HistoryRouter;

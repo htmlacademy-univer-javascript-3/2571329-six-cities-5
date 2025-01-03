@@ -19,7 +19,7 @@ describe('Offer Reducer', () => {
       nearOffersLoading: false,
       reviews: [],
       reviewsLoading: false,
-    }
+    };
 
     const resultState = offerReducer(expectedState, emptyAction);
 
@@ -27,25 +27,25 @@ describe('Offer Reducer', () => {
   });
 
   it('should return default initial state with undefined and empty action', () => {
-      const emptyAction = { type: '' };
-      const expectedState = {
-        currentCity: CITIES[0],
-        cities: CITIES,
-        offers: [],
-        offersLoading: false,
-        error: null,
-        offer: null,
-        offerLoading: false,
-        nearOffers: [],
-        nearOffersLoading: false,
-        reviews: [],
-        reviewsLoading: false,
-      }
-  
-      const resultState = offerReducer( undefined, emptyAction);
-  
-      expect(resultState).toEqual(expectedState);
-    });
+    const emptyAction = { type: '' };
+    const expectedState = {
+      currentCity: CITIES[0],
+      cities: CITIES,
+      offers: [],
+      offersLoading: false,
+      error: null,
+      offer: null,
+      offerLoading: false,
+      nearOffers: [],
+      nearOffersLoading: false,
+      reviews: [],
+      reviewsLoading: false,
+    };
+
+    const resultState = offerReducer(undefined, emptyAction);
+
+    expect(resultState).toEqual(expectedState);
+  });
 
   it('should return new  value of current city from state', () => {
     const initialState = {
@@ -60,27 +60,27 @@ describe('Offer Reducer', () => {
       nearOffersLoading: false,
       reviews: [],
       reviewsLoading: false,
-    }
-      const expectedState = {
-        currentCity: CITIES[2],
-        cities: CITIES,
-        offers: [],
-        offersLoading: false,
-        error: null,
-        offer: null,
-        offerLoading: false,
-        nearOffers: [],
-        nearOffersLoading: false,
-        reviews: [],
-        reviewsLoading: false,
-      }
-  
-      const resultState = offerReducer(initialState, changeSelectedCity(CITIES[2]));
-  
-      expect(resultState).toEqual(expectedState);
-    });
+    };
+    const expectedState = {
+      currentCity: CITIES[2],
+      cities: CITIES,
+      offers: [],
+      offersLoading: false,
+      error: null,
+      offer: null,
+      offerLoading: false,
+      nearOffers: [],
+      nearOffersLoading: false,
+      reviews: [],
+      reviewsLoading: false,
+    };
 
-    it('should return new  value of current city from state', () => {
+    const resultState = offerReducer(initialState, changeSelectedCity(CITIES[2]));
+
+    expect(resultState).toEqual(expectedState);
+  });
+
+  it('should return new  value of current city from state', () => {
     const initialState = {
       currentCity: CITIES[0],
       cities: CITIES,
@@ -107,10 +107,10 @@ describe('Offer Reducer', () => {
       nearOffersLoading: false,
       reviews: [],
       reviewsLoading: false,
-    }
-  
+    };
+
     const resultState = offerReducer(initialState, setOfferError(customError));
-  
+
     expect(resultState).toEqual(expectedState);
   });
 
@@ -127,10 +127,10 @@ describe('Offer Reducer', () => {
       nearOffersLoading: false,
       reviews: [],
       reviewsLoading: false,
-    }
-  
+    };
+
     const resultState = offerReducer(undefined, fetchOffersAction.pending);
-  
+
     expect(resultState).toEqual(expectedState);
   });
 
@@ -148,10 +148,10 @@ describe('Offer Reducer', () => {
       nearOffersLoading: false,
       reviews: [],
       reviewsLoading: false,
-    }
-  
+    };
+
     const resultState = offerReducer(undefined, fetchOffersAction.rejected(customError, '', undefined));
-  
+
     expect(resultState).toEqual(expectedState);
   });
 
@@ -169,13 +169,13 @@ describe('Offer Reducer', () => {
       nearOffersLoading: false,
       reviews: [],
       reviewsLoading: false,
-    }
-  
+    };
+
     const resultState = offerReducer(undefined, fetchOffersAction.fulfilled(fakeOffers, '', undefined));
-  
+
     expect(resultState).toEqual(expectedState);
   });
-  
+
   it('should return true of loading status of offer from state while "fetchOfferAction.pending"', () => {
     const expectedState = {
       currentCity: CITIES[0],
@@ -189,10 +189,10 @@ describe('Offer Reducer', () => {
       nearOffersLoading: false,
       reviews: [],
       reviewsLoading: false,
-    }
-  
+    };
+
     const resultState = offerReducer(undefined, fetchOfferAction.pending);
-  
+
     expect(resultState).toEqual(expectedState);
   });
 
@@ -210,10 +210,10 @@ describe('Offer Reducer', () => {
       nearOffersLoading: false,
       reviews: [],
       reviewsLoading: false,
-    }
-  
+    };
+
     const resultState = offerReducer(undefined, fetchOfferAction.rejected(customError, '', ''));
-  
+
     expect(resultState).toEqual(expectedState);
   });
 
@@ -231,13 +231,13 @@ describe('Offer Reducer', () => {
       nearOffersLoading: false,
       reviews: [],
       reviewsLoading: false,
-    }
-  
+    };
+
     const resultState = offerReducer(undefined, fetchOfferAction.fulfilled(fakeOffer, '', ''));
-  
+
     expect(resultState).toEqual(expectedState);
   });
-  
+
   it('should return true of loading status of reviews from state while "fetchReviewAction.pending"', () => {
     const expectedState = {
       currentCity: CITIES[0],
@@ -251,10 +251,10 @@ describe('Offer Reducer', () => {
       nearOffersLoading: false,
       reviews: [],
       reviewsLoading: true,
-    }
-  
+    };
+
     const resultState = offerReducer(undefined, fetchReviewAction.pending);
-  
+
     expect(resultState).toEqual(expectedState);
   });
 
@@ -272,10 +272,10 @@ describe('Offer Reducer', () => {
       nearOffersLoading: false,
       reviews: [],
       reviewsLoading: false,
-    }
-  
+    };
+
     const resultState = offerReducer(undefined, fetchReviewAction.rejected(customError, '', ''));
-  
+
     expect(resultState).toEqual(expectedState);
   });
 
@@ -293,13 +293,13 @@ describe('Offer Reducer', () => {
       nearOffersLoading: false,
       reviews: fakeReviews,
       reviewsLoading: false,
-    }
-  
+    };
+
     const resultState = offerReducer(undefined, fetchReviewAction.fulfilled(fakeReviews, '', ''));
-  
+
     expect(resultState).toEqual(expectedState);
   });
-  
+
   it('should return true of loading status of near offers from state while "fetchNearOfferAction.pending"', () => {
     const expectedState = {
       currentCity: CITIES[0],
@@ -313,10 +313,10 @@ describe('Offer Reducer', () => {
       nearOffersLoading: true,
       reviews: [],
       reviewsLoading: false,
-    }
-  
+    };
+
     const resultState = offerReducer(undefined, fetchNearOfferAction.pending);
-  
+
     expect(resultState).toEqual(expectedState);
   });
 
@@ -334,10 +334,10 @@ describe('Offer Reducer', () => {
       nearOffersLoading: false,
       reviews: [],
       reviewsLoading: false,
-    }
-  
+    };
+
     const resultState = offerReducer(undefined, fetchNearOfferAction.rejected(customError, '', ''));
-  
+
     expect(resultState).toEqual(expectedState);
   });
 
@@ -355,10 +355,9 @@ describe('Offer Reducer', () => {
       nearOffersLoading: false,
       reviews: [],
       reviewsLoading: false,
-    }
-  
+    };
+
     const resultState = offerReducer(undefined, fetchNearOfferAction.fulfilled(fakeNearOffers, '', ''));
-  
     expect(resultState).toEqual(expectedState);
   });
 });

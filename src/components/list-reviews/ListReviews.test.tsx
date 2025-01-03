@@ -5,7 +5,7 @@ import makeFakeReview from '../../mocks/makeFakeReviews.ts';
 describe('Component: ListReview', () => {
   it('should render correctly', () => {
     const reviewListTestId = 'reviews-list';
-    const reviewTitleTestId = 'reviews-title'
+    const reviewTitleTestId = 'reviews-title';
     const fakeReviewsList = new Array(3).fill(null).map(() => makeFakeReview());
     const expectedText = /Reviews/i;
     const expectedCountReviews = fakeReviewsList.length.toString();
@@ -19,4 +19,4 @@ describe('Component: ListReview', () => {
     expect(reviewList).toBeInTheDocument();
     expect(reviewTitle).toHaveTextContent(expectedCountReviews);
   });
-})
+});

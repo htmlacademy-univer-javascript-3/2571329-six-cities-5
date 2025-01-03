@@ -35,7 +35,7 @@ export const App: React.FC = () => {
           element={
             <Main offers={offers} currentCity={currentCity} cities={cities}/>
           }
-          />
+        />
         <Route
           path={AppRoute.Favorites}
           element={

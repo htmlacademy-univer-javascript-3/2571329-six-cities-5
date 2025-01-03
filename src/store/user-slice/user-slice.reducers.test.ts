@@ -14,7 +14,7 @@ describe('User Reducer', () => {
       userData: makeFakeUserData(),
       loading: false,
       favoriteOffers: new Array(3).fill(null).map(() => makeFakeOffer()),
-    }
+    };
 
     const resultState = userReducer(expectedState, emptyAction);
 
@@ -29,9 +29,9 @@ describe('User Reducer', () => {
       userData: null,
       loading: false,
       favoriteOffers: [],
-    }
+    };
 
-    const resultState = userReducer( undefined, emptyAction);
+    const resultState = userReducer(undefined, emptyAction);
 
     expect(resultState).toEqual(expectedState);
   });
@@ -51,7 +51,7 @@ describe('User Reducer', () => {
       userData: null,
       loading: false,
       favoriteOffers: [],
-    }
+    };
 
     const resultState = userReducer(initialState, setUserError(customError));
 
@@ -65,7 +65,7 @@ describe('User Reducer', () => {
       userData: null,
       loading: true,
       favoriteOffers: [],
-    }
+    };
 
     const resultState = userReducer(undefined, checkAuthorizationStatus.pending);
 
@@ -80,7 +80,7 @@ describe('User Reducer', () => {
       userData: null,
       loading: false,
       favoriteOffers: [],
-    }
+    };
 
     const resultState = userReducer(undefined, checkAuthorizationStatus.rejected(customError, '', undefined));
 
@@ -95,7 +95,7 @@ describe('User Reducer', () => {
       userData: fakeUserData,
       loading: false,
       favoriteOffers: [],
-    }
+    };
 
     const resultState = userReducer(undefined, checkAuthorizationStatus.fulfilled(fakeUserData, '', undefined));
 
@@ -111,7 +111,7 @@ describe('User Reducer', () => {
       userData: fakeUserData,
       loading: false,
       favoriteOffers: [],
-    }
+    };
 
     const resultState = userReducer(undefined, loginAction.fulfilled(fakeUserData, '', fakeAuthData));
 
@@ -127,7 +127,7 @@ describe('User Reducer', () => {
       userData: null,
       loading: false,
       favoriteOffers: [],
-    }
+    };
 
     const resultState = userReducer(undefined, loginAction.rejected(customError, '', fakeAuthData));
 
@@ -142,13 +142,12 @@ describe('User Reducer', () => {
       userData: null,
       loading: true,
       favoriteOffers: [],
-    }
+    };
 
     const resultState = userReducer(undefined, loginAction.pending('', fakeAuthData));
 
     expect(resultState).toEqual(expectedState);
   });
-  
   it('should return false of loading and new Auth status and reset user data after action "logoutAction.fulfilled"', () => {
     const fakeUserData = makeFakeUserData();
     const initialState = {
@@ -157,14 +156,14 @@ describe('User Reducer', () => {
       userData: fakeUserData,
       loading: false,
       favoriteOffers: [],
-    }
+    };
     const expectedState = {
       error: null,
       authorizationStatus: AuthorizationStatus.NoAuth,
       userData: null,
       loading: false,
       favoriteOffers: [],
-    }
+    };
 
     const resultState = userReducer(initialState, logoutAction.fulfilled);
 
@@ -180,14 +179,14 @@ describe('User Reducer', () => {
       userData: fakeUserData,
       loading: false,
       favoriteOffers: [],
-    }
+    };
     const expectedState = {
       error: customError.message,
       authorizationStatus: AuthorizationStatus.Auth,
       userData: fakeUserData,
       loading: false,
       favoriteOffers: [],
-    }
+    };
 
     const resultState = userReducer(initialState, logoutAction.rejected(customError, '', undefined));
 
@@ -202,14 +201,14 @@ describe('User Reducer', () => {
       userData: fakeUserData,
       loading: false,
       favoriteOffers: [],
-    }
+    };
     const expectedState = {
       error: null,
       authorizationStatus: AuthorizationStatus.UnKnown,
       userData: fakeUserData,
       loading: true,
       favoriteOffers: [],
-    }
+    };
 
     const resultState = userReducer(initialState, logoutAction.pending);
 
@@ -225,14 +224,14 @@ describe('User Reducer', () => {
       userData: fakeUserData,
       loading: true,
       favoriteOffers: [],
-    }
+    };
     const expectedState = {
       error: null,
       authorizationStatus: AuthorizationStatus.Auth,
       userData: fakeUserData,
       loading: false,
       favoriteOffers: fakeFavoriteOffers,
-    }
+    };
 
     const resultState = userReducer(initialState, fetchFavoriteOffersAction.fulfilled(fakeFavoriteOffers, '', undefined));
 
@@ -248,14 +247,14 @@ describe('User Reducer', () => {
       userData: fakeUserData,
       loading: true,
       favoriteOffers: [],
-    }
+    };
     const expectedState = {
       error: customError.message,
       authorizationStatus: AuthorizationStatus.Auth,
       userData: fakeUserData,
       loading: false,
       favoriteOffers: [],
-    }
+    };
 
     const resultState = userReducer(initialState, fetchFavoriteOffersAction.rejected(customError, '', undefined));
 
@@ -270,14 +269,14 @@ describe('User Reducer', () => {
       userData: fakeUserData,
       loading: false,
       favoriteOffers: [],
-    }
+    };
     const expectedState = {
       error: null,
       authorizationStatus: AuthorizationStatus.Auth,
       userData: fakeUserData,
       loading: true,
       favoriteOffers: [],
-    }
+    };
 
     const resultState = userReducer(initialState, fetchFavoriteOffersAction.pending);
 

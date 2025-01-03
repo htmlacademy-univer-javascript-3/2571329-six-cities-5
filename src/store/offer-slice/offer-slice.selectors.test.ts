@@ -19,13 +19,11 @@ describe('Offer Selector', () => {
       reviews: new Array(3).fill(null).map(() => makeFakeReview()),
       reviewsLoading: false,
     }
-  }
+  };
 
   it('should return current city data from state', () => {
     const rigthCurrentCity = state[NameSpace.OFFER].currentCity;
-  
     const resultCurrentCity = selectCurrentCity(state);
-  
     expect(resultCurrentCity).toBe(rigthCurrentCity);
   });
 
@@ -108,4 +106,4 @@ describe('Offer Selector', () => {
 
     expect(resultReviewsLoading).toBe(rigthReviewsLoading);
   });
-})
+});

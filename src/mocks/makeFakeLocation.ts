@@ -1,15 +1,13 @@
 import { address } from 'faker';
 
 type TLocation = {
-  latitude: number,
-  longitude: number,
+  latitude: number;
+  longitude: number;
 }
 
-const makeFakeLocation = (): TLocation => { 
-  return {
-    latitude: Number(address.latitude()),
-    longitude: Number(address.longitude()),
-  }
-};
+const makeFakeLocation = (): TLocation => ({
+  latitude: Number(address.latitude()),
+  longitude: Number(address.longitude()),
+});
 
 export default makeFakeLocation;

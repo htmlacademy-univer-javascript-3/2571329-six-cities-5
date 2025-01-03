@@ -178,7 +178,7 @@ describe('Application Routing', () => {
 
   it('should render "OfferPage" when offer is in offerList and without form comment authorization status is NoAuth', () => {
     const withHistoryComponent = withHistory(<App />, mockHistory);
-    const expectedTextHeader = /sign in/i; 
+    const expectedTextHeader = /sign in/i;
     const fakeUserData = makeFakeUserData();
     const expectedOffer = makeFakeOffer();
     const expectedOfferId = datatype.string();

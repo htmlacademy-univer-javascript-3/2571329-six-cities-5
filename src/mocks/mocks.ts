@@ -5,9 +5,9 @@ import { NameSpace, State } from '../types';
 import { AuthorizationStatus } from '../types';
 import { CITIES } from '../types/cities';
 
-export type AppThunkDispatch = ThunkDispatch<State, ReturnType<typeof createAPI>, Action>; 
+export type AppThunkDispatch = ThunkDispatch<State, ReturnType<typeof createAPI>, Action>;
 
-export const mockUserInitialState = { 
+export const mockUserInitialState = {
   error: null,
   authorizationStatus: AuthorizationStatus.UnKnown,
   userData: null,

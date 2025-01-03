@@ -21,7 +21,6 @@ describe('User Selector', () => {
 
     expect(resultAuthorizationStatus).toBe(rigthAuthorizationStatus);
   });
-  
   it('should return user error from state', () => {
     const rigthUserError = state[NameSpace.USER].error;
 
@@ -53,4 +52,4 @@ describe('User Selector', () => {
 
     expect(resultUserFavoriteOffers).toEqual(rigthUserFavoriteOffers);
   });
-})
+});

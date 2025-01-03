@@ -26,14 +26,14 @@ describe('Async actions', () => {
     store = mockStoreCreater({
       [NameSpace.USER]: mockUserInitialState,
       [NameSpace.OFFER]: mockOfferInitialState,
-    })
+    });
   });
 
   describe('checkAuthorizationStatus', () => {
     it('should dispatch "checkAuthorizationStatus.pending", "fetchFavoriteOffersAction.pending" and "checkAuthorizationStatus.fulfilled" with thunk checkAuthorizationStatus', async () => {
       const expectedPayload = makeFakeUserData();
       mockAxiosAdapter.onGet(APIRoute.Login).reply(200, expectedPayload);
-      
+
       await store.dispatch(checkAuthorizationStatus());
       const actions = extractActionsTypes(store.getActions());
       const emittedActions = store.getActions();
@@ -47,10 +47,10 @@ describe('Async actions', () => {
 
       expect(checkAuthorizationStatusFulfilled.payload).toEqual(expectedPayload);
     });
-    
+
     it('should dispatch "checkAuthorizationStatus.pending", and "checkAuthorizationStatus.reject" when server response 400', async () => {
       mockAxiosAdapter.onGet(APIRoute.Login).reply(400, []);
-      
+
       await store.dispatch(checkAuthorizationStatus());
       const actions = extractActionsTypes(store.getActions());
 
@@ -300,7 +300,7 @@ describe('Async actions', () => {
         loginAction.pending.type,
         fetchFavoriteOffersAction.pending.type,
         loginAction.fulfilled.type,
-      ])
+      ]);
     });
 
     it('should call "saveToken" once with the received token', async () => {
@@ -325,8 +325,8 @@ describe('Async actions', () => {
       expect(actions).toEqual([
         loginAction.pending.type,
         loginAction.rejected.type,
-      ])
-    })
+      ]);
+    });
   });
   //------
   describe('logoutAction', () => {
@@ -339,7 +339,7 @@ describe('Async actions', () => {
       expect(actions).toEqual([
         logoutAction.pending.type,
         logoutAction.fulfilled.type,
-      ])
+      ]);
     });
 
     it('should call "dropToken" once', async () => {
@@ -360,7 +360,7 @@ describe('Async actions', () => {
       expect(actions).toEqual([
         logoutAction.pending.type,
         logoutAction.rejected.type,
-      ])
-    })
+      ]);
+    });
   });
 });

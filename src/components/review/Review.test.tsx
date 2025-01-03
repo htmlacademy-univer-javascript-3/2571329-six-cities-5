@@ -8,8 +8,8 @@ describe('Component: Review', () => {
     const userImageTestId = 'review-user-img';
     const reviewRatingTestId = 'review-rating';
     const reviewTimeTestId = 'review-time';
-    const reviewCommentTestId = 'review-comment'; 
-    const fakeReview = makeFakeReview(); 
+    const reviewCommentTestId = 'review-comment';
+    const fakeReview = makeFakeReview();
 
     render(<Review review={fakeReview}/>);
     const userName = screen.getByTestId(userNameTestId);

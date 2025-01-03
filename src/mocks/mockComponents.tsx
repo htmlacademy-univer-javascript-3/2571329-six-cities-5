@@ -23,9 +23,9 @@ export function withHistory(component: JSX.Element, history?: MemoryHistory) {
 }
 
 type ComponentWithMockStore = {
-  withStoreComponent: JSX.Element,
-  mockStore: MockStore,
-  mockAxiosAdapter: MockAdapter
+  withStoreComponent: JSX.Element;
+  mockStore: MockStore;
+  mockAxiosAdapter: MockAdapter;
 }
 
 export function withStore(
@@ -35,7 +35,7 @@ export function withStore(
   const axios = createAPI();
   const mockAxiosAdapter = new MockAdapter(axios);
   const middleware = [thunk.withExtraArgument(axios)];
-  const mockStoreCreater = configureMockStore<State, Action<string>, AppThunkDispatch>(middleware)
+  const mockStoreCreater = configureMockStore<State, Action<string>, AppThunkDispatch>(middleware);
   const mockStore = mockStoreCreater(initialState);
 
   return ({
