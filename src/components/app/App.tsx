@@ -7,10 +7,11 @@ import Favorites from '../../pages/favorites/Favorites';
 import Offer from '../../pages/offer/Offer';
 import NotFound from '../../pages/not-found/NotFound';
 import { PrivateRoute } from '../../components/private-router/PrivateRouter';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { useInitApp } from '../../hooks/use-init-app';
-import { selectCities, selectCurrentCity, selectOffersData } from '../../store/offerSlice';
-import { selectAuthStatus } from '../../store/userSlice';
+import { selectCities, selectCurrentCity, selectOffersData } from '../../store/offer-slice/selectors';
+import { selectAuthStatus } from '../../store/user-slice/selectors';
+import { HelmetProvider } from 'react-helmet-async';
 
 export const App: React.FC = () => {
   useInitApp();
@@ -27,7 +28,7 @@ export const App: React.FC = () => {
   const authStatus = useAppSelector(selectAuthStatus);
   const authorizationStatus = useMemo(() => authStatus, [authStatus]);
   return (
-    <BrowserRouter>
+    <HelmetProvider>
       <Routes>
         <Route
           path={AppRoute.Main}
@@ -39,7 +40,7 @@ export const App: React.FC = () => {
           path={AppRoute.Favorites}
           element={
             <PrivateRoute authorizationStatus={authorizationStatus}>
-              <Favorites offers={offers}/>
+              <Favorites />
             </PrivateRoute>
           }
         />
@@ -56,6 +57,6 @@ export const App: React.FC = () => {
           element={<NotFound />}
         />
       </Routes>
-    </BrowserRouter>
+    </HelmetProvider>
   );
 };

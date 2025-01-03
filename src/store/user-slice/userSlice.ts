@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { AuthorizationStatus, NameSpace, offerCard, State, UserData } from '../types';
-import { checkAuthorizationStatus, fetchFavoriteOffersAction, loginAction, logoutAction } from './api-actions';
+import { AuthorizationStatus, NameSpace, offerCard, UserData } from '../../types';
+import { checkAuthorizationStatus, fetchFavoriteOffersAction, loginAction, logoutAction } from '../api-actions';
 
 type InitialState = {
   error: string | null;
@@ -61,9 +61,11 @@ const userSlice = createSlice({
       })
       .addCase(logoutAction.pending, (state) => {
         state.loading = true;
+        state.authorizationStatus = AuthorizationStatus.UnKnown;
       })
       .addCase(logoutAction.rejected, (state, action) => {
         state.loading = false;
+        state.authorizationStatus = AuthorizationStatus.Auth;
         if (action.error.message) {
           state.error = action.error.message;
         }
@@ -91,15 +93,5 @@ const userSlice = createSlice({
 });
 
 export const userReducer = userSlice.reducer;
-
-export const selectUserData = (state: State) => state[NameSpace.USER].userData;
-
-export const selectUserDataLoading = (state: State) => state[NameSpace.USER].loading;
-
-export const selectAuthStatus = (state: State) => state[NameSpace.USER].authorizationStatus;
-
-export const selectErrorUserDate = (state: State) => state[NameSpace.USER].error;
-
-export const selectUserFavoritesData = (state: State) => state[NameSpace.USER].favoriteOffers;
 
 export const { setUserError } = userSlice.actions;

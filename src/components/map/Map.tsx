@@ -55,6 +55,7 @@ const Map: React.FC<MapProps> = ({
     <div
       style={{height: '100%'}}
       ref={mapRef}
+      data-testid="map"
     >
     </div>
   );
