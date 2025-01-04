@@ -2,7 +2,7 @@ import React, { useState, useMemo, useCallback } from 'react';
 import { offerCard, CityData } from '../../types';
 import { ListOffers } from '../../components/list-offers/ListOffers';
 import Map from '../../components/map/Map';
-import useFilter from '../../hooks/use-fiter';
+import useFilter from '../../hooks/use-filter';
 import { CardClassNameList, SortName } from '../../types';
 import { useAppDispatch } from '../../hooks';
 import { ListCities } from '../../components/list-cities/ListCities';
@@ -47,7 +47,7 @@ const Main: React.FC<MainProps> = ({
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
-          <section className="locations container" data-testid="cities-list">
+          <section className="locations container">
             <ListCities currentCity={currentCity.name} cities={cities} onUserSelect={handleUserSelectCity}/>
           </section>
         </div>

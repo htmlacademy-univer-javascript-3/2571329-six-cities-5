@@ -7,7 +7,6 @@ import React, { SyntheticEvent, useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { selectAuthStatus, selectUserData, selectUserFavoritesData } from '../../store/user-slice/selectors';
 
-
 const UserInfoHeader = (): JSX.Element => {
   const authStatus = useAppSelector(selectAuthStatus);
   const authorizationStatus = useMemo(() => authStatus, [authStatus]);
