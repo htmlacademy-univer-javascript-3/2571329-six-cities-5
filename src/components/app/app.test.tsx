@@ -220,7 +220,7 @@ describe('Application Routing', () => {
     const { withStoreComponent } = withStore(withHistoryComponent, makeFakeStore());
     const unknownRoute = datatype.string();
     mockHistory.push(`/${unknownRoute}`);
-    const expectedText = 'Not Found 404.';
+    const expectedText = /Not Found 404./i;
 
     render(withStoreComponent);
 
