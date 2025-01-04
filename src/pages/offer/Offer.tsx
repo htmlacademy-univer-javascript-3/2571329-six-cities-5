@@ -54,10 +54,9 @@ const Offer: React.FC = () => {
   [id]);
 
   const handleFavouriteClick = useCallback(() => {
-    const pathOption = offerData?.isFavorite ?
-      `${offerData!.id}/0` :
-      `${offerData!.id}/1`;
-    
+    const pathOption = offerData!.id + offerData?.isFavorite ?
+      '/0' :
+      '/1';
     dispatch(changeFavoriteOfferAction(pathOption));
   }, [offerData]);
 

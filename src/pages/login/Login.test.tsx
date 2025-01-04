@@ -12,7 +12,7 @@ vi.mock('../../hooks', () => ({
 describe('Component: Login', () => {
   const mockDispatch = vi.fn();
   beforeEach(() => {
-    vi.clearAllMocks(); 
+    vi.clearAllMocks();
     (useAppDispatch as jest.Mock).mockReturnValue(mockDispatch);
     (useAppSelector as jest.Mock).mockImplementation();
   });
@@ -34,8 +34,8 @@ describe('Component: Login', () => {
 
     render(preparedComponent);
 
-    const emailInput = screen.getByTestId('email-input') as HTMLInputElement;
-    const passwordInput = screen.getByTestId('password-input') as HTMLInputElement;
+    const emailInput: HTMLInputElement = screen.getByTestId('email-input');
+    const passwordInput: HTMLInputElement = screen.getByTestId('password-input');
 
     fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
     fireEvent.change(passwordInput, { target: { value: 'password123' } });

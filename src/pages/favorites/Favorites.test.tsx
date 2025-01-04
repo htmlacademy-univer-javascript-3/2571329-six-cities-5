@@ -5,7 +5,7 @@ import makeFakeOffer from '../../mocks/makeFakeOffer';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import makeFakeUserData from '../../mocks/makeFakeUserData';
 import { AuthorizationStatus, NameSpace } from '../../types/index';
-import { mockUserInitialState } from '../../mocks/mocks';
+import { mockUserInitialState, SelectorFunction } from '../../mocks/mocks';
 
 vi.mock('../../hooks', () => ({
   useAppDispatch: vi.fn(),
@@ -17,9 +17,9 @@ describe('Component: FavouritePage', () => {
   const fakeUserData = makeFakeUserData();
   const mockDispatch = vi.fn();
   beforeEach(() => {
-    vi.clearAllMocks(); 
+    vi.clearAllMocks();
     (useAppDispatch as jest.Mock).mockReturnValue(mockDispatch);
-    (useAppSelector as jest.Mock).mockImplementation((selector) => {
+    (useAppSelector as jest.Mock).mockImplementation((selector: SelectorFunction) => {
       if (selector.name === 'selectUserFavoritesData') {
         return fakeFavoriteOffers;
       }
@@ -47,13 +47,12 @@ describe('Component: FavouritePage', () => {
   });
 
   it('should render correctly with favorite offers empty', () => {
-    (useAppSelector as jest.Mock).mockImplementation((selector) => {
+    (useAppSelector as jest.Mock).mockImplementation((selector: SelectorFunction) => {
       if (selector.name === 'selectUserFavoritesData') {
         return [];
       }
       return null;
     });
-    
     const expectedText = /Favorites \(empty\)/i;
     const {withStoreComponent} = withStore(<Favorites />, {
       [NameSpace.USER]: {

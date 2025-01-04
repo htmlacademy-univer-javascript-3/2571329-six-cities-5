@@ -2,7 +2,7 @@ import { withStore, withHistory } from '../../mocks/mockComponents';
 import { screen, render } from '@testing-library/react';
 import makeFakeOffer from '../../mocks/makeFakeOffer';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { makeFakeStore } from '../../mocks/mocks';
+import { makeFakeStore, SelectorFunction } from '../../mocks/mocks';
 import Main from './Main';
 import makeFakeCityData from '../../mocks/makeFakeCityData';
 import { CITIES } from '../../types/cities';
@@ -17,9 +17,9 @@ describe('Component: Main', () => {
   const fakeCurrentCityData = makeFakeCityData();
   const fakeOffersList = [makeFakeOffer()];
   beforeEach(() => {
-    vi.clearAllMocks(); 
+    vi.clearAllMocks();
     (useAppDispatch as jest.Mock).mockReturnValue(mockDispatch);
-    (useAppSelector as jest.Mock).mockImplementation((selector) => {
+    (useAppSelector as jest.Mock).mockImplementation((selector: SelectorFunction) => {
       if (selector.name === 'selectUserFavoritesData') {
         return [];
       }
@@ -27,7 +27,7 @@ describe('Component: Main', () => {
   });
 
   it('should render correctly with main when offers !== 0', () => {
-    const withHistoryComponent = withHistory(<Main  cities={CITIES} currentCity={fakeCurrentCityData} offers={fakeOffersList}/>);
+    const withHistoryComponent = withHistory(<Main cities={CITIES} currentCity={fakeCurrentCityData} offers={fakeOffersList}/>);
     const { withStoreComponent } = withStore(withHistoryComponent, makeFakeStore());
     const citiesListTestId = 'cities-list';
     const cityPlaceTestId = 'city-place';
@@ -46,7 +46,7 @@ describe('Component: Main', () => {
   });
 
   it('should render correctly with main when offers === 0', () => {
-    const withHistoryComponent = withHistory(<Main  cities={CITIES} currentCity={fakeCurrentCityData} offers={[]}/>);
+    const withHistoryComponent = withHistory(<Main cities={CITIES} currentCity={fakeCurrentCityData} offers={[]}/>);
     const { withStoreComponent } = withStore(withHistoryComponent, makeFakeStore());
     const citiesListTestId = 'cities-list';
     const cityPlaceTestId = 'city-place';

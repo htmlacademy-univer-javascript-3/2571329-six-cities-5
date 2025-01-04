@@ -22,7 +22,6 @@ describe('Application Routing', () => {
     const cityPlaceTestId = 'city-place';
     const expectedCity = 'Paris';
     mockHistory.push(AppRoute.Main);
-
     render(withStoreComponent);
     const citiesList = screen.getByTestId(citiesListTestId);
     const cityTextParagraf = screen.getByTestId(cityPlaceTestId);

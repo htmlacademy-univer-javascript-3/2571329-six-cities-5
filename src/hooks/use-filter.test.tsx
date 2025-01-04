@@ -32,7 +32,7 @@ const fakeOffers = [
     price: 100,
     rating: 3,
   },
-]
+];
 
 const TestComponent: React.FC<TestComponentProps> = ({ offers }) => {
   const filteredOfferByLowPrice = useFilter({offers, currentCity, sortType: SortName.lowToHigh});

@@ -4,7 +4,7 @@ import UserInfoHeader from './UserInfoHeader';
 import { AuthorizationStatus, AppRoute, NameSpace } from '../../types';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { withStore, withHistory } from '../../mocks/mockComponents';
-import { mockUserInitialState } from '../../mocks/mocks';
+import { mockUserInitialState, SelectorFunction } from '../../mocks/mocks';
 import makeFakeUserData from '../../mocks/makeFakeUserData';
 import makeFakeOffer from '../../mocks/makeFakeOffer';
 
@@ -24,13 +24,13 @@ vi.mock('react-router-dom', async () => {
 });
 
 describe('Component: UserInfoHeader', () => {
-  const mockUserData = makeFakeUserData(); 
+  const mockUserData = makeFakeUserData();
   const mockFavorites = [makeFakeOffer(), makeFakeOffer()];
 
   beforeEach(() => {
     vi.clearAllMocks();
     (useAppDispatch as jest.Mock).mockReturnValue(mockDispatch);
-    (useAppSelector as jest.Mock).mockImplementation((selector) => {
+    (useAppSelector as jest.Mock).mockImplementation((selector: SelectorFunction) => {
       if (selector.name === 'selectAuthStatus') {
         return AuthorizationStatus.Auth;
       }
@@ -63,7 +63,7 @@ describe('Component: UserInfoHeader', () => {
   });
 
   it('should render "Sign in" if user is not authorized', () => {
-    (useAppSelector as jest.Mock).mockImplementation((selector) => {
+    (useAppSelector as jest.Mock).mockImplementation((selector: SelectorFunction) => {
       if (selector.name === 'selectAuthStatus') {
         return AuthorizationStatus.NoAuth;
       }

@@ -16,7 +16,6 @@ describe('Component: Map Component', () => {
         activeOffer={null}
       />
     );
-  
     const mapElement = screen.getByTestId('map');
     expect(mapElement).toBeInTheDocument();
   });

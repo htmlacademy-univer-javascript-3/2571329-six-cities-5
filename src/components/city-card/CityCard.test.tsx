@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import makeFakeOffer from '../../mocks/makeFakeOffer';
 import { AuthorizationStatus, CardClassNameList, NameSpace } from '../../types';
 import { withHistory, withStore } from '../../mocks/mockComponents';
-import { mockOfferInitialState, mockUserInitialState } from '../../mocks/mocks';
+import { mockOfferInitialState, mockUserInitialState, SelectorFunction } from '../../mocks/mocks';
 
 vi.mock('../../hooks', () => ({
   useAppDispatch: vi.fn(),
@@ -26,9 +26,9 @@ describe('CityCard', () => {
   const mockDispatch = vi.fn();
 
   beforeEach(() => {
-    vi.clearAllMocks(); 
+    vi.clearAllMocks();
     (useAppDispatch as jest.Mock).mockReturnValue(mockDispatch);
-    (useAppSelector as jest.Mock).mockImplementation((selector) => {
+    (useAppSelector as jest.Mock).mockImplementation((selector: SelectorFunction) => {
       if (selector.name === 'selectAuthStatus') {
         return AuthorizationStatus.Auth;
       }
@@ -64,7 +64,7 @@ describe('CityCard', () => {
   });
 
   it('should navigate to login if user is not authorized and clicks on favorite button', () => {
-    (useAppSelector as jest.Mock).mockImplementation((selector) => {
+    (useAppSelector as jest.Mock).mockImplementation((selector: SelectorFunction) => {
       if (selector.name === 'selectAuthStatus') {
         return AuthorizationStatus.NoAuth;
       }
@@ -144,7 +144,7 @@ describe('CityCard', () => {
   });
 
   it('should display active class on bookmark button if offer is favorite', () => {
-    (useAppSelector as jest.Mock).mockImplementation((selector) => {
+    (useAppSelector as jest.Mock).mockImplementation((selector: SelectorFunction) => {
       if (selector.name === 'selectUserFavoritesData') {
         return [mockOffer];
       }

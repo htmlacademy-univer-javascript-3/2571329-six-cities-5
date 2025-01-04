@@ -34,7 +34,7 @@ describe('Component: ListCities', () => {
     const cityElement = screen.getByText('Amsterdam').closest('li')!;
     fireEvent.click(cityElement);
 
-    expect(mockOnUserSelect).toHaveBeenCalledWith(CITIES.find(city => city.name === 'Amsterdam'));
+    expect(mockOnUserSelect).toHaveBeenCalledWith(CITIES.find((city) => city.name === 'Amsterdam'));
     expect(mockOnUserSelect).toHaveBeenCalledTimes(1);
   });
 

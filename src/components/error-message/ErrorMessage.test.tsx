@@ -13,7 +13,7 @@ describe('Component: Error Message', () => {
 
   afterEach(() => {
     vi.clearAllTimers();
-    vi.restoreAllMocks(); 
+    vi.restoreAllMocks();
   });
 
   it('renders an error message for user error correctly', () => {

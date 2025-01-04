@@ -4,7 +4,7 @@ import makeFakeOffer from '../../mocks/makeFakeOffer';
 import makeFakeUserData from '../../mocks/makeFakeUserData';
 import { AuthorizationStatus, NameSpace } from '../../types/index';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { mockUserInitialState, mockOfferInitialState, makeFakeStore } from '../../mocks/mocks';
+import { mockUserInitialState, mockOfferInitialState, makeFakeStore, SelectorFunction } from '../../mocks/mocks';
 import Offer from './Offer';
 import makeFakeCityData from '../../mocks/makeFakeCityData';
 import makeFakeReview from '../../mocks/makeFakeReviews';
@@ -22,12 +22,12 @@ describe('Component: Offer', () => {
   const fakeReviewsList = [makeFakeReview()];
   const fakeNearOffersList = [makeFakeOffer()];
   beforeEach(() => {
-    vi.clearAllMocks(); 
+    vi.clearAllMocks();
     (useAppDispatch as jest.Mock).mockReturnValue(mockDispatch);
   });
 
   it('should render correctly with offer when user not authorizated', () => {
-    (useAppSelector as jest.Mock).mockImplementation((selector) => {
+    (useAppSelector as jest.Mock).mockImplementation((selector: SelectorFunction) => {
       if (selector.name === 'selectCurrentCity') {
         return fakeCurrentCityData;
       }
@@ -88,7 +88,7 @@ describe('Component: Offer', () => {
   });
 
   it('should render correctly with offer when user authorizated', () => {
-    (useAppSelector as jest.Mock).mockImplementation((selector) => {
+    (useAppSelector as jest.Mock).mockImplementation((selector: SelectorFunction) => {
       if (selector.name === 'selectCurrentCity') {
         return fakeCurrentCityData;
       }
