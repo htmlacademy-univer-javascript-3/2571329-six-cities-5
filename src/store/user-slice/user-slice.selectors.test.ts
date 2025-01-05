@@ -1,6 +1,6 @@
 import { AuthorizationStatus, NameSpace } from '../../types';
-import makeFakeUserData from '../../mocks/makeFakeUserData';
-import makeFakeOffer from '../../mocks/makeFakeOffer';
+import makeFakeUserData from '../../utils/make-fake-user-data';
+import makeFakeOffer from '../../utils/make-fake-offer';
 import { selectAuthStatus, selectErrorUserDate, selectUserData, selectUserDataLoading, selectUserFavoritesData } from './selectors';
 
 describe('User Selector', () => {
