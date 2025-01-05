@@ -1,6 +1,6 @@
 import { AppRoute, City } from '../../types';
-import { ListOffers } from '../../components/list-offers/ListOffers';
-import UserInfoHeader from '../../components/user-info-header/UserInfoHeader';
+import { ListOffers } from '../../components/list-offers/list-offers';
+import UserInfoHeader from '../../components/user-info-header/user-info-header';
 import { CardClassNameList } from '../../types';
 import React, { useMemo } from 'react';
 import { useAppSelector } from '../../hooks';

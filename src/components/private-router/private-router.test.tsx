@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import { Route, Routes } from 'react-router-dom';
 import { MemoryHistory, createMemoryHistory } from 'history';
-import { AppRoute, AuthorizationStatus } from '../../types';
-import { withHistory } from '../../mocks/mockComponents.tsx';
-import { PrivateRoute } from './PrivateRouter.tsx';
+import { AppRoute, AuthorizationStatus } from '../../types/index.ts';
+import { withHistory } from '../../utils/mocks/mock-components.tsx';
+import { PrivateRoute } from './private-router.tsx';
 
 describe('Component: PrivateRoute', () => {
   let mockHistory: MemoryHistory;

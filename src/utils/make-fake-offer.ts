@@ -1,8 +1,8 @@
 import { helpers, image, datatype } from 'faker';
 import { offerCard } from '../types';
-import makeFakeLocation from './makeFakeLocation';
-import makeFakeCityData from './makeFakeCityData';
-import makeFakeUserData from './makeFakeUserData';
+import makeFakeLocation from './make-fake-location';
+import makeFakeCityData from './make-fake-city-data';
+import makeFakeUserData from './make-fake-user-data';
 
 const makeFakeOffer = (): offerCard => ({
   id: datatype.uuid(),

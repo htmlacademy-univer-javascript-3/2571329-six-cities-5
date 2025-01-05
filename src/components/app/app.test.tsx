@@ -1,12 +1,12 @@
 import { createMemoryHistory, MemoryHistory } from 'history';
-import { withHistory, withStore } from '../../mocks/mockComponents';
-import { App } from './App';
-import { makeFakeStore, mockOfferInitialState, mockUserInitialState } from '../../mocks/mocks';
+import { withHistory, withStore } from '../../utils/mocks/mock-components';
+import { App } from './app';
+import { makeFakeStore, mockOfferInitialState, mockUserInitialState } from '../../utils/mocks/mocks';
 import { datatype } from 'faker';
 import { screen, render } from '@testing-library/react';
 import { AppRoute, AuthorizationStatus, NameSpace } from '../../types';
-import makeFakeUserData from '../../mocks/makeFakeUserData';
-import makeFakeOffer from '../../mocks/makeFakeOffer';
+import makeFakeUserData from '../../utils/make-fake-user-data';
+import makeFakeOffer from '../../utils/make-fake-offer';
 
 describe('Application Routing', () => {
   let mockHistory: MemoryHistory;

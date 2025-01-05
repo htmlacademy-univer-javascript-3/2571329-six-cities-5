@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { setOfferError } from '../../store/offer-slice/offerSlice';
+import { setOfferError } from '../../store/offer-slice/offer-slice';
 import { selectErrorOfferData } from '../../store/offer-slice/selectors';
-import { setUserError } from '../../store/user-slice/userSlice';
+import { setUserError } from '../../store/user-slice/user-slice';
 import { selectErrorUserDate } from '../../store/user-slice/selectors';
 import { TIMEOUT_SHOW_ERROR } from '../../types/constant';
 import './error-message.css';

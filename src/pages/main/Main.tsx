@@ -1,18 +1,18 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { offerCard, CityData } from '../../types';
-import { ListOffers } from '../../components/list-offers/ListOffers';
-import Map from '../../components/map/Map';
+import { ListOffers } from '../../components/list-offers/list-offers';
+import Map from '../../components/map/map';
 import useFilter from '../../hooks/use-filter';
 import { CardClassNameList, SortName } from '../../types';
 import { useAppDispatch } from '../../hooks';
-import { ListCities } from '../../components/list-cities/ListCities';
-import { FilterOffer } from '../../components/filter-offers/FilterOffer';
+import { ListCities } from '../../components/list-cities/list-cities';
+import { FilterOffer } from '../../components/filter-offers/filter-offer';
 import { useAppSelector } from '../../hooks';
-import LoadingScreen from '../../components/loader-screen/LoadingScreen';
-import UserInfoHeader from '../../components/user-info-header/UserInfoHeader';
-import { changeSelectedCity } from '../../store/offer-slice/offerSlice';
+import LoadingScreen from '../../components/loader-screen/loading-screen';
+import UserInfoHeader from '../../components/user-info-header/user-info-header';
+import { changeSelectedCity } from '../../store/offer-slice/offer-slice';
 import { selectOffersLoading } from '../../store/offer-slice/selectors';
-import MainEmpty from '../../components/main-empty/MainEmpty';
+import MainEmpty from '../../components/main-empty/main-empty';
 
 type MainProps = {
   offers: offerCard[];

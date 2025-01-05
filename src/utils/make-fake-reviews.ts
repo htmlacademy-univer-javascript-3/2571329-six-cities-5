@@ -1,6 +1,6 @@
 import { TReview } from '../types';
 import { helpers, datatype, date } from 'faker';
-import makeFakeUserData from './makeFakeUserData';
+import makeFakeUserData from './make-fake-user-data';
 
 const makeFakeReview = (): TReview => ({
   id: datatype.uuid(),

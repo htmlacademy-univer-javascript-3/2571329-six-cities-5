@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { App } from './components/app/App';
+import { App } from './components/app/app';
 import { Provider } from 'react-redux';
 import { store } from './store';
-import ErrorMessage from './components/error-message/ErrorMessage';
-import HistoryRouter from './components/history-router/HistoryRouter';
-import browserHistory from './services/browserHistory';
+import ErrorMessage from './components/error-message/error-message';
+import HistoryRouter from './utils/history-router/history-router';
+import browserHistory from './services/browser-history';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

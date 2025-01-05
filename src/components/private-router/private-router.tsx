@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom';
 import { AuthorizationStatus, AppRoute } from '../../types';
-import LoadingScreen from '../loader-screen/LoadingScreen';
+import LoadingScreen from '../loader-screen/loading-screen';
 
 interface IPrivateRouterProps {
   authorizationStatus: AuthorizationStatus;

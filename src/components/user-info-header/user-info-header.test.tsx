@@ -1,12 +1,12 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { vi, describe, it, beforeEach, expect } from 'vitest';
-import UserInfoHeader from './UserInfoHeader';
+import UserInfoHeader from './user-info-header';
 import { AuthorizationStatus, AppRoute, NameSpace } from '../../types';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { withStore, withHistory } from '../../mocks/mockComponents';
-import { mockUserInitialState, SelectorFunction } from '../../mocks/mocks';
-import makeFakeUserData from '../../mocks/makeFakeUserData';
-import makeFakeOffer from '../../mocks/makeFakeOffer';
+import { withStore, withHistory } from '../../utils/mocks/mock-components';
+import { mockUserInitialState, SelectorFunction } from '../../utils/mocks/mocks';
+import makeFakeUserData from '../../utils/make-fake-user-data';
+import makeFakeOffer from '../../utils/make-fake-offer';
 
 vi.mock('../../hooks', () => ({
   useAppDispatch: vi.fn(),

@@ -1,9 +1,9 @@
-import makeFakeAuthData from '../../mocks/makeFakeAuthData';
-import makeFakeOffer from '../../mocks/makeFakeOffer';
-import makeFakeUserData from '../../mocks/makeFakeUserData';
+import makeFakeAuthData from '../../utils/make-fake-auth-data';
+import makeFakeOffer from '../../utils/make-fake-offer';
+import makeFakeUserData from '../../utils/make-fake-user-data';
 import { AuthorizationStatus } from '../../types';
 import { checkAuthorizationStatus, fetchFavoriteOffersAction, loginAction, logoutAction } from '../api-actions';
-import { setUserError, userReducer } from './userSlice';
+import { setUserError, userReducer } from './user-slice';
 
 describe('User Reducer', () => {
   it('should return initial state with empty action', () => {

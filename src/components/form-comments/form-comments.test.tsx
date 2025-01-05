@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { FormComments } from './FormComments';
+import { FormComments } from './form-comments';
 
 describe('FormComments Component', () => {
   const mockHandleSubmit = vi.fn();

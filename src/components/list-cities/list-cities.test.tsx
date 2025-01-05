@@ -1,5 +1,5 @@
-import { ListCities } from './ListCities.tsx';
-import { withHistory, withStore } from '../../mocks/mockComponents.tsx';
+import { ListCities } from './list-cities.tsx';
+import { withHistory, withStore } from '../../utils/mocks/mock-components.tsx';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { CITIES } from '../../types/cities.ts';
 

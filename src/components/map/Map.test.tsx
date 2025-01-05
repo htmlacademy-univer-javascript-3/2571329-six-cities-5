@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it } from 'vitest';
-import makeFakeOffer from '../../mocks/makeFakeOffer.ts';
-import makeFakeCityData from '../../mocks/makeFakeCityData.ts';
-import Map from './Map.tsx';
+import makeFakeOffer from '../../utils/make-fake-offer.ts';
+import makeFakeCityData from '../../utils/make-fake-city-data.ts';
+import Map from './map.tsx';
 
 describe('Component: Map Component', () => {
   it('renders a map container correctly', () => {

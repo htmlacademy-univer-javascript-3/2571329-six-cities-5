@@ -1,13 +1,13 @@
-import { withStore, withHistory } from '../../mocks/mockComponents';
+import { withStore, withHistory } from '../../utils/mocks/mock-components';
 import { screen, render } from '@testing-library/react';
-import makeFakeOffer from '../../mocks/makeFakeOffer';
-import makeFakeUserData from '../../mocks/makeFakeUserData';
+import makeFakeOffer from '../../utils/make-fake-offer';
+import makeFakeUserData from '../../utils/make-fake-user-data';
 import { AuthorizationStatus, NameSpace } from '../../types/index';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { mockUserInitialState, mockOfferInitialState, makeFakeStore, SelectorFunction } from '../../mocks/mocks';
-import Offer from './Offer';
-import makeFakeCityData from '../../mocks/makeFakeCityData';
-import makeFakeReview from '../../mocks/makeFakeReviews';
+import { mockUserInitialState, mockOfferInitialState, makeFakeStore, SelectorFunction } from '../../utils/mocks/mocks';
+import Offer from './offer';
+import makeFakeCityData from '../../utils/make-fake-city-data';
+import makeFakeReview from '../../utils/make-fake-reviews';
 
 vi.mock('../../hooks', () => ({
   useAppDispatch: vi.fn(),

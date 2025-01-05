@@ -1,12 +1,12 @@
 import { useAppSelector } from '../../hooks';
 import { useMemo } from 'react';
-import Main from '../../pages/main/Main';
+import Main from '../../pages/main/main';
 import { AppRoute } from '../../types/index';
-import Login from '../../pages/login/Login';
-import Favorites from '../../pages/favorites/Favorites';
-import Offer from '../../pages/offer/Offer';
-import NotFound from '../../pages/not-found/NotFound';
-import { PrivateRoute } from '../../components/private-router/PrivateRouter';
+import Login from '../../pages/login/login';
+import Favorites from '../../pages/favorites/favorites';
+import Offer from '../../pages/offer/offer';
+import NotFound from '../../pages/not-found/not-found';
+import { PrivateRoute } from '../private-router/private-router';
 import { Route, Routes } from 'react-router-dom';
 import { useInitApp } from '../../hooks/use-init-app';
 import { selectCities, selectCurrentCity, selectOffersData } from '../../store/offer-slice/selectors';

@@ -1,9 +1,9 @@
-import { ListOffers } from './ListOffers.tsx';
-import { withHistory, withStore } from '../../mocks/mockComponents.tsx';
+import { ListOffers } from './list-offers.tsx';
+import { withHistory, withStore } from '../../utils/mocks/mock-components.tsx';
 import { render, screen } from '@testing-library/react';
-import makeFakeOffer from '../../mocks/makeFakeOffer.ts';
+import makeFakeOffer from '../../utils/make-fake-offer.ts';
 import { CardClassNameList, NameSpace } from '../../types/index.ts';
-import { mockUserInitialState } from '../../mocks/mocks.ts';
+import { mockUserInitialState } from '../../utils/mocks/mocks.ts';
 
 describe('Component: ListOffers', () => {
   it('should render correctly', () => {
