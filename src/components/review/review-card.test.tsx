@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { Review } from './review';
+import { Review } from './review-card';
 import makeFakeReview from '../../utils/make-fake-reviews';
 
 describe('Component: Review', () => {

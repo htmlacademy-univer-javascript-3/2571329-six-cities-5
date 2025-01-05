@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { offerCard, CityData } from '../../types';
 import { ListOffers } from '../../components/list-offers/list-offers';
-import Map from '../../components/map/map';
+import Map from '../../components/map/map-component';
 import useFilter from '../../hooks/use-filter';
 import { CardClassNameList, SortName } from '../../types';
 import { useAppDispatch } from '../../hooks';

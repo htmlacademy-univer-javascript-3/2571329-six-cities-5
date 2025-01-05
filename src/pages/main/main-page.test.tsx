@@ -1,4 +1,4 @@
-import Main from './main';
+import Main from './main-page';
 import { withStore, withHistory } from '../../utils/mocks/mock-components';
 import { screen, render } from '@testing-library/react';
 import makeFakeOffer from '../../utils/make-fake-offer';

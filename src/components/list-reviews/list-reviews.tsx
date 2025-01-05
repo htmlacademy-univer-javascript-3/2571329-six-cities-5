@@ -1,5 +1,5 @@
 import { TReview } from '../../types';
-import { Review } from '../review/review';
+import { Review } from '../review/review-card';
 
 type ListReviewProps = {
   reviews: TReview[];

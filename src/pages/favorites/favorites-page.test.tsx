@@ -1,4 +1,4 @@
-import Favorites from './favorites';
+import Favorites from './favorites-page';
 import { withStore, withHistory } from '../../utils/mocks/mock-components';
 import { screen, render } from '@testing-library/react';
 import makeFakeOffer from '../../utils/make-fake-offer';

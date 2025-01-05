@@ -1,10 +1,10 @@
-import Offer from '../../pages/offer/offer';
-import Main from '../../pages/main/main';
-import Login from '../../pages/login/login';
+import Offer from '../../pages/offer/offer-page';
+import Main from '../../pages/main/main-page';
+import Login from '../../pages/login/login-page';
 import { useAppSelector } from '../../hooks';
 import { useMemo } from 'react';
 import { AppRoute } from '../../types/index';
-import Favorites from '../../pages/favorites/favorites';
+import Favorites from '../../pages/favorites/favorites-page';
 import NotFound from '../../pages/not-found/not-found';
 import { PrivateRoute } from '../../components/private-router/private-router';
 import { Route, Routes } from 'react-router-dom';

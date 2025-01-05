@@ -2,7 +2,7 @@ import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { CardClassNameList, AuthorizationStatus, AppRoute } from '../../types';
 import { commentData, FormComments } from '../../components/form-comments/form-comments';
 import { ListReviews } from '../../components/list-reviews/list-reviews';
-import Map from '../../components/map/map';
+import Map from '../../components/map/map-component';
 import { ListOffers } from '../../components/list-offers/list-offers';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
