@@ -1,3 +1,4 @@
+import Offer from './offer';
 import { withStore, withHistory } from '../../utils/mocks/mock-components';
 import { screen, render } from '@testing-library/react';
 import makeFakeOffer from '../../utils/make-fake-offer';
@@ -5,7 +6,6 @@ import makeFakeUserData from '../../utils/make-fake-user-data';
 import { AuthorizationStatus, NameSpace } from '../../types/index';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { mockUserInitialState, mockOfferInitialState, makeFakeStore, SelectorFunction } from '../../utils/mocks/mocks';
-import Offer from './offer';
 import makeFakeCityData from '../../utils/make-fake-city-data';
 import makeFakeReview from '../../utils/make-fake-reviews';
 

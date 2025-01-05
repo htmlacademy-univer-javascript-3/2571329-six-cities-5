@@ -1,6 +1,6 @@
+import Login from './login';
 import { describe, it, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Login from './login';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { withHistory, withStore } from '../../utils/mocks/mock-components';
 
