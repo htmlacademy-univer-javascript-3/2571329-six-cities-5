@@ -1,6 +1,6 @@
 import { createMemoryHistory, MemoryHistory } from 'history';
 import { withHistory, withStore } from '../../utils/mocks/mock-components';
-import { App } from './app';
+import { App } from './app-component';
 import { makeFakeStore, mockOfferInitialState, mockUserInitialState } from '../../utils/mocks/mocks';
 import { datatype } from 'faker';
 import { screen, render } from '@testing-library/react';

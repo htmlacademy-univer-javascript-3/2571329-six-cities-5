@@ -6,7 +6,7 @@ import { useMemo } from 'react';
 import { AppRoute } from '../../types/index';
 import Favorites from '../../pages/favorites/favorites-page';
 import NotFound from '../../pages/not-found/not-found';
-import { PrivateRoute } from '../../components/private-router/private-router';
+import { PrivateRoute } from '../private-router/private-router';
 import { Route, Routes } from 'react-router-dom';
 import { useInitApp } from '../../hooks/use-init-app';
 import { selectCities, selectCurrentCity, selectOffersData } from '../../store/offer-slice/selectors';
